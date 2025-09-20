@@ -1,118 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clube de Física</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="css/style.css">
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group label {
+      font-size: 14px;
+      color: #555;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .input-group input[type="password"] {
+      position: relative;
+    }
+    .input-group input[type="password"] + .show-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      color: #888;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .social-login {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+    .social-login a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #555;
+    }
+    .social-login a:hover {
+      color: #4CAF50;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col bg-gray-900 text-white">
-
-<!-- Navbar -->
-<nav class="bg-black bg-opacity-80 backdrop-blur-md p-4 shadow-2xl flex justify-between items-center sticky top-0 z-50 transition-all duration-300">
-<h1 class="text-xl sm:text-2xl font-extrabold tracking-wide animate-pulse">Clube de Física ⚡</h1>
-<ul class="hidden md:flex gap-6 text-sm sm:text-base font-medium">
-<li><a href="#sobre" class="hover:text-blue-400 hover:scale-110 transition transform">Sobre</a></li>
-<li><a href="#nucleos" class="hover:text-blue-400 hover:scale-110 transition transform">Núcleos</a></li>
-<li><a href="#atividades" class="hover:text-blue-400 hover:scale-110 transition transform">Atividades</a></li>
-<li><a href="#contato" class="hover:text-blue-400 hover:scale-110 transition transform">Contato</a></li>
-<li><button onclick="openModal()" class="bg-blue-600 px-3 py-2 rounded-lg hover:bg-blue-800 transition">Login / Registrar</button></li>
-</ul>
-<button id="menu-btn" class="md:hidden text-3xl">☰</button>
-</nav>
-
-<!-- Hero Section com Slider de Imagens -->
-<section class="hero-bg relative flex-1 flex flex-col items-center justify-center text-center p-6 sm:p-10 text-white overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <div id="heroSlider" class="w-full h-full relative">
-      <img src="images/experimento1.jpg" class="hero-slide absolute w-full h-full object-cover opacity-100 transition-opacity duration-1000" alt="Estudantes IFCE fazendo experimento 1">
-      <img src="images/experimento2.jpg" class="hero-slide absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" alt="Estudantes IFCE fazendo experimento 2">
-      <img src="images/experimento3.jpg" class="hero-slide absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" alt="Estudantes IFCE fazendo experimento 3">
-      <img src="images/experimento4.jpg" class="hero-slide absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" alt="Estudantes IFCE fazendo experimento 4">
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required>
+        <span class="show-password" onclick="togglePassword()">👁️</span>
+      </div>
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+    <div class="social-login">
+      <a href="#" id="googleLogin">Login com Google</a>
+      <a href="#">Esqueceu a senha?</a>
     </div>
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
   </div>
-  
-  <div class="relative z-10 max-w-3xl">
-    <h2 class="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-4 animate-bounce">Bem-vindo ao Clube de Física</h2>
-    <p class="text-sm sm:text-base md:text-xl mb-6">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
-    <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-110 transform transition px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-2xl text-sm sm:text-lg font-semibold">
-      Conheça nossos Núcleos
-    </a>
-  </div>
-</section>
 
-<!-- Sobre -->
-<section id="sobre" class="section-bg py-12 sm:py-16 px-4 sm:px-20 relative" style="background-image:url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
-<div class="overlay max-w-4xl mx-auto text-center bg-black bg-opacity-50 p-6 rounded-2xl">
-<h3 class="text-xl sm:text-3xl font-bold text-blue-300 mb-4 sm:mb-6">Sobre o Clube</h3>
-<p class="text-sm sm:text-base md:text-lg leading-relaxed">
-O Clube de Física é um espaço para mentes curiosas e apaixonadas pela ciência. Reunimos estudantes para explorar conceitos fundamentais, realizar experimentos práticos e desenvolver projetos que unem teoria e prática. 🌌
-</p>
-</div>
-</section>
+  <script>
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const passwordType = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = passwordType;
+    }
 
-<!-- Núcleos -->
-<section id="nucleos" class="section-bg py-12 sm:py-16 px-4 sm:px-20 relative" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
-<div class="overlay">
-<h3 class="text-xl sm:text-3xl font-bold text-purple-300 text-center mb-8 sm:mb-10">Nossos Núcleos</h3>
-<div class="grid md:grid-cols-2 gap-6 sm:gap-10">
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      console.log('E-mail:', email);
+      console.log('Senha:', password);
+      // Aqui você pode adicionar a lógica para autenticação
+    });
 
-<div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
-<img src="images/tesla.jpg" alt="Tesla" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-blue-500">
-<h4 class="text-sm sm:text-xl font-semibold text-blue-400 mb-2 sm:mb-3">⚡ Tesla - Núcleo de Eletrofísica</h4>
-<p class="text-gray-200 text-xs sm:text-sm">Estudo da eletricidade, circuitos e fenômenos eletromagnéticos.</p>
-</div>
-
-<div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
-<img src="images/nova_fisica.jpg" alt="Nova Física" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-green-500">
-<h4 class="text-sm sm:text-xl font-semibold text-green-400 mb-2 sm:mb-3">📚 Nova Física</h4>
-<p class="text-gray-200 text-xs sm:text-sm">Metodologias criativas para aproximar a ciência da sala de aula ao dia a dia.</p>
-</div>
-
-<div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
-<img src="images/robotica.jpg" alt="Robótica" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-yellow-500">
-<h4 class="text-sm sm:text-xl font-semibold text-yellow-400 mb-2 sm:mb-3">🤖 Robótica</h4>
-<p class="text-gray-200 text-xs sm:text-sm">Integra Física, programação e inovação tecnológica em protótipos inteligentes.</p>
-</div>
-
-<div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
-<img src="images/nepa.jpg" alt="NEPA" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-pink-500">
-<h4 class="text-sm sm:text-xl font-semibold text-pink-400 mb-2 sm:mb-3">🚀 NEPA</h4>
-<p class="text-gray-200 text-xs sm:text-sm">Foguetes experimentais, astronomia e aerodinâmica em prática.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- Contato -->
-<section id="contato" class="section-bg py-12 sm:py-16 px-4 sm:px-20 relative" style="background-image:url('https://images.unsplash.com/photo-1520975918318-3e94c5f0f54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
-<div class="overlay text-center bg-black bg-opacity-50 p-6 rounded-2xl">
-<h3 class="text-xl sm:text-3xl font-bold text-purple-300 mb-6">Entre em Contato</h3>
-<form action="mailto:athila.pires09@aluno.ifce.edu.br" method="post" enctype="text/plain" class="max-w-lg mx-auto space-y-4">
-<input type="text" name="nome" placeholder="Seu nome" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base">
-<input type="email" name="email" placeholder="Seu e-mail" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base">
-<textarea name="mensagem" placeholder="Sua mensagem" rows="4" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base"></textarea>
-<button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-110 transform transition px-6 py-3 rounded-xl shadow-lg font-semibold text-sm sm:text-base">
-Enviar
-</button>
-</form>
-</div>
-</section>
-
-<!-- Modal Login/Registro -->
-<div id="authModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 transition-opacity duration-500">
-<div class="bg-gray-900 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 sm:p-10 transform scale-90 opacity-0 transition-all duration-500 relative">
-
-<div class="absolute inset-0 rounded-3xl overflow-hidden opacity-20">
-<img src="https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Física" class="w-full h-full object-cover">
-</div>
-
-<!-- Tabs -->
-<div class="flex justify-center mb-6 relative z-10">
-<button id="loginTab" class="px-6 py-2 font-bold border-b-2 border-blue-500 text-blue-400 transition">Login</button>
-<button id="registerTab" class="px-6 py-2 font-bold border-b-2 border-transparent text-white hover:border-green-500 hover:text-green-400 transition">Registrar</button>
-
+    document.getElementById('googleLogin').addEventListener('click', function(event) {
+      event.preventDefault();
+      // Aqui você pode adicionar a lógica para autenticação com o Google
+      console.log('Login com Google');
+    });
+  </script>
+</body>
+</html>
