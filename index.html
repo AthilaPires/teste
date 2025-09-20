@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clube de Física - Login Epic Style</title>
+  <title>Clube de Física - Login/Registro</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
 
   <!-- Botão para abrir o modal -->
-  <button onclick="openModal()" class="bg-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition">Abrir Login</button>
+  <button onclick="openModal()" class="bg-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition">Abrir Login/Registro</button>
 
   <!-- Modal -->
   <div id="authModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
@@ -21,10 +21,10 @@
         <button id="registerTab" class="px-6 py-2 font-bold border-b-2 border-transparent hover:border-green-500 hover:text-green-400 transition">Registrar</button>
       </div>
 
-      <!-- Conteúdo -->
+      <!-- Login Form -->
       <div id="loginForm">
-        <input type="email" placeholder="E-mail" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
-        <input type="password" placeholder="Senha" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+        <input type="email" id="loginEmail" placeholder="E-mail" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+        <input type="password" id="loginPassword" placeholder="Senha" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
         <button onclick="login()" class="w-full bg-blue-600 py-3 rounded-lg font-bold hover:bg-blue-800 transition mb-3">Entrar</button>
         <div class="flex flex-col gap-2">
           <button class="w-full bg-red-600 py-2 rounded-lg font-semibold hover:bg-red-800 transition">Login com Google</button>
@@ -32,10 +32,11 @@
         </div>
       </div>
 
+      <!-- Register Form -->
       <div id="registerForm" class="hidden">
-        <input type="text" placeholder="Nome" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
-        <input type="email" placeholder="E-mail" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
-        <input type="password" placeholder="Senha" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+        <input type="text" id="regName" placeholder="Nome" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+        <input type="email" id="regEmail" placeholder="E-mail" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+        <input type="password" id="regPassword" placeholder="Senha" class="w-full p-3 mb-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
         <button onclick="register()" class="w-full bg-green-600 py-3 rounded-lg font-bold hover:bg-green-800 transition mb-3">Registrar</button>
         <div class="flex flex-col gap-2">
           <button class="w-full bg-red-600 py-2 rounded-lg font-semibold hover:bg-red-800 transition">Registrar com Google</button>
@@ -55,6 +56,9 @@
     const registerTab = document.getElementById('registerTab');
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
+
+    // Armazenamento simples para teste
+    let users = [];
 
     function openModal() {
       modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -86,9 +90,43 @@
       loginTab.classList.add('border-transparent', 'text-white');
     });
 
-    // Funções de teste
-    function login() { window.open('https://example.com', '_blank'); }
-    function register() { window.open('https://example.com', '_blank'); }
+    // Função de registro
+    function register() {
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+
+      if(!name || !email || !password) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      // Adiciona usuário
+      users.push({ name, email, password });
+      alert("Registrado com sucesso! Agora faça login.");
+
+      // Limpa campos e muda para login
+      document.getElementById('regName').value = "";
+      document.getElementById('regEmail').value = "";
+      document.getElementById('regPassword').value = "";
+
+      loginTab.click();
+      document.getElementById('loginEmail').value = email;
+    }
+
+    // Função de login
+    function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const user = users.find(u => u.email === email && u.password === password);
+      if(user) {
+        alert(`Bem-vindo, ${user.name}! Redirecionando...`);
+        window.location.href = "index.html"; // página principal do Clube de Física
+      } else {
+        alert("E-mail ou senha inválidos!");
+      }
+    }
   </script>
 </body>
 </html>
