@@ -1,72 +1,207 @@
-<!-- Navbar -->
-<nav class="fixed w-full z-50 bg-black/80 backdrop-blur-lg shadow-xl px-4 sm:px-8 py-4 flex justify-between items-center transition-all duration-500">
-  <h1 class="text-2xl sm:text-3xl font-extrabold tracking-widest text-white animate-pulse flex items-center gap-2">
-    ⚡ Clube de Física
-  </h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clube de Física</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col bg-gray-900 text-white">
 
-  <!-- Links desktop -->
-  <ul class="hidden md:flex gap-8 text-sm sm:text-base font-semibold text-white items-center">
-    <li><a href="#sobre" class="hover:text-blue-400 hover:scale-110 transition transform">Sobre</a></li>
-    <li><a href="#nucleos" class="hover:text-purple-400 hover:scale-110 transition transform">Núcleos</a></li>
-    <li><a href="#atividades" class="hover:text-green-400 hover:scale-110 transition transform">Atividades</a></li>
-    <li><a href="#contato" class="hover:text-pink-400 hover:scale-110 transition transform">Contato</a></li>
-    <li>
-      <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-xl font-bold shadow-lg hover:scale-105 transition transform">
-        Login / Registrar
-      </button>
-    </li>
-  </ul>
+  <!-- Navbar -->
+  <nav class="bg-black bg-opacity-80 backdrop-blur-md p-4 shadow-2xl flex justify-between items-center sticky top-0 z-50 transition-all duration-300">
+    <h1 class="text-xl sm:text-2xl font-extrabold tracking-wide animate-pulse">Clube de Física ⚡</h1>
+    <ul class="hidden md:flex gap-6 text-sm sm:text-base font-medium">
+      <li><a href="#sobre" class="hover:text-blue-400 hover:scale-110 transition transform">Sobre</a></li>
+      <li><a href="#nucleos" class="hover:text-blue-400 hover:scale-110 transition transform">Núcleos</a></li>
+      <li><a href="#atividades" class="hover:text-blue-400 hover:scale-110 transition transform">Atividades</a></li>
+      <li><a href="#contato" class="hover:text-blue-400 hover:scale-110 transition transform">Contato</a></li>
+      <li><button onclick="openModal()" class="bg-blue-600 px-3 py-2 rounded-lg hover:bg-blue-800 transition">Login / Registrar</button></li>
+    </ul>
+    <!-- Botão hambúrguer mobile -->
+    <button id="menu-btn" class="md:hidden text-3xl">☰</button>
+  </nav>
 
-  <!-- Botão hambúrguer mobile -->
-  <button id="menu-btn" class="md:hidden relative w-8 h-8 focus:outline-none">
-    <span class="hamburger absolute h-0.5 w-8 bg-white left-0 top-2 transition-all duration-300"></span>
-    <span class="hamburger absolute h-0.5 w-8 bg-white left-0 top-4 transition-all duration-300"></span>
-    <span class="hamburger absolute h-0.5 w-8 bg-white left-0 top-6 transition-all duration-300"></span>
-  </button>
+  <!-- Hero Section -->
+  <section class="hero-bg flex-1 flex flex-col items-center justify-center text-center p-6 sm:p-10 text-white relative">
+    <div class="overlay max-w-3xl">
+      <h2 class="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-4 animate-bounce">Bem-vindo ao Clube de Física</h2>
+      <p class="text-sm sm:text-base md:text-xl mb-6">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
+      <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-110 transform transition px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-2xl text-sm sm:text-lg font-semibold">
+        Conheça nossos Núcleos
+      </a>
+    </div>
+  </section>
 
-  <!-- Menu mobile -->
-  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-black/90 backdrop-blur-md transform translate-x-full transition-transform duration-500 flex flex-col gap-6 py-20 px-6 z-50">
-    <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-2xl text-red-500 hover:scale-125 transition">×</button>
-    <a href="#sobre" class="text-white font-semibold text-lg hover:text-blue-400 hover:scale-105 transition transform">Sobre</a>
-    <a href="#nucleos" class="text-white font-semibold text-lg hover:text-purple-400 hover:scale-105 transition transform">Núcleos</a>
-    <a href="#atividades" class="text-white font-semibold text-lg hover:text-green-400 hover:scale-105 transition transform">Atividades</a>
-    <a href="#contato" class="text-white font-semibold text-lg hover:text-pink-400 hover:scale-105 transition transform">Contato</a>
-    <button onclick="openModal(); closeMobileMenu()" class="mt-4 bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-xl font-bold shadow-lg hover:scale-105 transition transform">Login / Registrar</button>
+  <!-- Sobre -->
+  <section id="sobre" class="section-bg py-12 sm:py-16 px-4 sm:px-20 relative" style="background-image:url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+    <div class="overlay max-w-4xl mx-auto text-center bg-black bg-opacity-50 p-6 rounded-2xl">
+      <h3 class="text-xl sm:text-3xl font-bold text-blue-300 mb-4 sm:mb-6">Sobre o Clube</h3>
+      <p class="text-sm sm:text-base md:text-lg leading-relaxed">
+        O Clube de Física é um espaço para mentes curiosas e apaixonadas pela ciência. Reunimos estudantes para explorar conceitos fundamentais, realizar experimentos práticos e desenvolver projetos que unem teoria e prática. 🌌
+      </p>
+    </div>
+  </section>
+
+  <!-- Núcleos -->
+  <section id="nucleos" class="section-bg py-12 sm:py-16 px-4 sm:px-20 relative" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+    <div class="overlay">
+      <h3 class="text-xl sm:text-3xl font-bold text-purple-300 text-center mb-8 sm:mb-10">Nossos Núcleos</h3>
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-10">
+
+        <!-- Tesla -->
+        <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
+          <img src="images/tesla.jpg" alt="Tesla" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-blue-500">
+          <h4 class="text-sm sm:text-xl font-semibold text-blue-400 mb-2 sm:mb-3">⚡ Tesla - Núcleo de Eletrofísica</h4>
+          <p class="text-gray-200 text-xs sm:text-sm">Estudo da eletricidade, circuitos e fenômenos eletromagnéticos.</p>
+        </div>
+
+        <!-- Nova Física -->
+        <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
+          <img src="images/nova_fisica.jpg" alt="Nova Física" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-green-500">
+          <h4 class="text-sm sm:text-xl font-semibold text-green-400 mb-2 sm:mb-3">📚 Nova Física</h4>
+          <p class="text-gray-200 text-xs sm:text-sm">Metodologias criativas para aproximar a ciência da sala de aula ao dia a dia.</p>
+        </div>
+
+        <!-- Robótica -->
+        <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
+          <img src="images/robotica.jpg" alt="Robótica" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-yellow-500">
+          <h4 class="text-sm sm:text-xl font-semibold text-yellow-400 mb-2 sm:mb-3">🤖 Robótica</h4>
+          <p class="text-gray-200 text-xs sm:text-sm">Integra Física, programação e inovação tecnológica em protótipos inteligentes.</p>
+        </div>
+
+        <!-- NEPA -->
+        <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform">
+          <img src="images/nepa.jpg" alt="NEPA" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-pink-500">
+          <h4 class="text-sm sm:text-xl font-semibold text-pink-400 mb-2 sm:mb-3">🚀 NEPA</h4>
+          <p class="text-gray-200 text-xs sm:text-sm">Foguetes experimentais, astronomia e aerodinâmica em prática.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="section-bg py-12 sm:py-16 px-4 sm:px-20 relative" style="background-image:url('https://images.unsplash.com/photo-1520975918318-3e94c5f0f54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+    <div class="overlay text-center bg-black bg-opacity-50 p-6 rounded-2xl">
+      <h3 class="text-xl sm:text-3xl font-bold text-purple-300 mb-6">Entre em Contato</h3>
+      <form action="mailto:athila.pires09@aluno.ifce.edu.br" method="post" enctype="text/plain" class="max-w-lg mx-auto space-y-4">
+        <input type="text" name="nome" placeholder="Seu nome" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base">
+        <input type="email" name="email" placeholder="Seu e-mail" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base">
+        <textarea name="mensagem" placeholder="Sua mensagem" rows="4" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base"></textarea>
+        <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-110 transform transition px-6 py-3 rounded-xl shadow-lg font-semibold text-sm sm:text-base">
+          Enviar
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modal Login/Registro Google -->
+  <div id="authModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 transition-opacity duration-500">
+    <div class="bg-gray-900 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 sm:p-10 transform scale-90 opacity-0 transition-all duration-500 relative">
+      
+      <!-- Background Physics Image -->
+      <div class="absolute inset-0 rounded-3xl overflow-hidden opacity-20">
+        <img src="https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Física" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex justify-center mb-6 relative z-10">
+        <button id="loginTab" class="px-6 py-2 font-bold border-b-2 border-blue-500 text-blue-400 transition">Login</button>
+        <button id="registerTab" class="px-6 py-2 font-bold border-b-2 border-transparent text-white hover:border-green-500 hover:text-green-400 transition">Registrar</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm" class="relative z-10">
+        <div id="google-login-button" class="w-full"></div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="registerForm" class="hidden relative z-10">
+        <div id="google-register-button" class="w-full"></div>
+      </div>
+
+      <!-- Close -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-red-500 font-bold text-xl z-10 hover:scale-125 transition">×</button>
+    </div>
   </div>
-</nav>
 
-<script>
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-let menuOpen = false;
+  <!-- Rodapé -->
+  <footer class="bg-black bg-opacity-80 text-gray-300 text-center py-6 mt-10">
+    <p>&copy; 2025 Clube de Física | Desenvolvido para o GitHub Pages</p>
+  </footer>
 
-menuBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('translate-x-full');
-  mobileMenu.classList.toggle('translate-x-0');
+  <!-- Scripts -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    const modal = document.getElementById('authModal');
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
 
-  // animação do botão hamburguer para X
-  const spans = menuBtn.querySelectorAll('.hamburger');
-  if(!menuOpen){
-    spans[0].classList.add('rotate-45', 'top-4');
-    spans[1].classList.add('opacity-0');
-    spans[2].classList.add('-rotate-45', 'top-4');
-    menuOpen = true;
-  } else {
-    spans[0].classList.remove('rotate-45', 'top-4');
-    spans[1].classList.remove('opacity-0');
-    spans[2].classList.remove('-rotate-45', 'top-4');
-    menuOpen = false;
-  }
-});
+    function openModal() {
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.querySelector('div').classList.remove('opacity-0', 'scale-90');
+        modal.querySelector('div').classList.add('opacity-100', 'scale-100');
+      }, 50);
+    }
 
-function closeMobileMenu(){
-  mobileMenu.classList.remove('translate-x-0');
-  mobileMenu.classList.add('translate-x-full');
-  // reset botão X
-  const spans = menuBtn.querySelectorAll('.hamburger');
-  spans[0].classList.remove('rotate-45', 'top-4');
-  spans[1].classList.remove('opacity-0');
-  spans[2].classList.remove('-rotate-45', 'top-4');
-  menuOpen = false;
-}
-</script>
+    function closeModal() {
+      modal.querySelector('div').classList.remove('opacity-100', 'scale-100');
+      modal.querySelector('div').classList.add('opacity-0', 'scale-90');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    loginTab.addEventListener('click', () => {
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('registerForm').classList.add('hidden');
+      loginTab.classList.add('border-blue-500','text-blue-400');
+      registerTab.classList.remove('border-green-500','text-green-400');
+    });
+
+    registerTab.addEventListener('click', () => {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('registerForm').classList.remove('hidden');
+      loginTab.classList.remove('border-blue-500','text-blue-400');
+      registerTab.classList.add('border-green-500','text-green-400');
+    });
+
+    // Menu hambúrguer responsivo
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('hidden');
+    });
+
+    // Google Login
+    function handleCredentialResponse(response) {
+      console.log("JWT recebido:", response.credential);
+      localStorage.setItem('userToken', response.credential);
+      alert("Login feito com Google com sucesso!");
+      closeModal();
+    }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "SEU_CLIENT_ID_AQUI",
+        callback: handleCredentialResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("google-login-button"),
+        { theme: "outline", size: "large", text: "signin_with" }
+      );
+
+      google.accounts.id.renderButton(
+        document.getElementById("google-register-button"),
+        { theme: "outline", size: "large", text: "signup_with" }
+      );
+
+      const token = localStorage.getItem('userToken');
+      if(token){
+        console.log("Usuário já logado!");
+      }
+    }
+  </script>
+
+</body>
+</html>
