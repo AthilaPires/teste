@@ -12,26 +12,22 @@
 <!-- Navbar -->
 <nav class="bg-black bg-opacity-80 backdrop-blur-md p-4 shadow-2xl flex justify-between items-center sticky top-0 z-50 transition-all duration-300">
   <h1 class="text-2xl sm:text-3xl font-extrabold tracking-wide text-white animate-pulse">Clube de Física ⚡</h1>
-  
+
   <!-- Menu Desktop -->
   <ul class="hidden md:flex gap-8 text-sm sm:text-base font-semibold">
-    <li class="group relative"><a href="#sobre" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Sobre</a>
-      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-    </li>
-    <li class="group relative"><a href="#nucleos" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Núcleos</a>
-      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-    </li>
-    <li class="group relative"><a href="#atividades" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Atividades</a>
-      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-    </li>
-    <li class="group relative"><a href="#contato" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Contato</a>
-      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-    </li>
+    <li><a href="#sobre" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Sobre</a></li>
+    <li><a href="#nucleos" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Núcleos</a></li>
+    <li><a href="#atividades" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Atividades</a></li>
+    <li><a href="#contato" class="text-white hover:text-yellow-400 transition transform hover:scale-110">Contato</a></li>
     <li><button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-xl shadow-lg text-white font-bold hover:scale-110 transform transition">Login / Registrar</button></li>
   </ul>
 
-  <!-- Hamburger Mobile -->
-  <button id="menu-btn" class="md:hidden text-3xl text-white">☰</button>
+  <!-- Hamburger Mobile Horizontal -->
+  <div id="mobileMenuBtn" class="md:hidden flex flex-col justify-between w-8 h-6 cursor-pointer" onclick="openSidebar()">
+    <span class="block h-1 w-full bg-white rounded-full"></span>
+    <span class="block h-1 w-full bg-white rounded-full"></span>
+    <span class="block h-1 w-full bg-white rounded-full"></span>
+  </div>
 </nav>
 
 <!-- Sidebar Mobile -->
@@ -172,32 +168,77 @@ function closeModal() {
   setTimeout(() => modal.classList.add('hidden'), 300);
 }
 
-// Toggle password
+// Toggle Password
 function togglePassword(id){
   const input = document.getElementById(id);
   input.type = input.type === 'password' ? 'text' : 'password';
 }
 
-// Switch tabs
+// Switch Tabs
 const loginTab = document.getElementById('loginTab');
 const registerTab = document.getElementById('registerTab');
-loginTab.addEventListener('click', ()=>{document.getElementById('loginForm').classList.remove('hidden'); document.getElementById('registerForm').classList.add('hidden'); loginTab.classList.add('border-blue-500','text-blue-400'); registerTab.classList.remove('border-green-500','text-green-400');});
-registerTab.addEventListener('click', ()=>{document.getElementById('loginForm').classList.add('hidden'); document.getElementById('registerForm').classList.remove('hidden'); loginTab.classList.remove('border-blue-500','text-blue-400'); registerTab.classList.add('border-green-500','text-green-400');});
+loginTab.addEventListener('click', ()=>{
+  document.getElementById('loginForm').classList.remove('hidden');
+  document.getElementById('registerForm').classList.add('hidden');
+  loginTab.classList.add('border-blue-500','text-blue-400');
+  registerTab.classList.remove('border-green-500','text-green-400');
+});
+registerTab.addEventListener('click', ()=>{
+  document.getElementById('loginForm').classList.add('hidden');
+  document.getElementById('registerForm').classList.remove('hidden');
+  loginTab.classList.remove('border-blue-500','text-blue-400');
+  registerTab.classList.add('border-green-500','text-green-400');
+});
 
 // Sidebar Mobile
-const menuBtn = document.getElementById('menu-btn');
-const sidebar = document.getElementById('mobileSidebar');
-menuBtn.addEventListener('click', () => {
-  sidebar.classList.remove('-translate-x-full');
-  sidebar.classList.add('translate-x-0');
-});
+function openSidebar() {
+  document.getElementById('mobileSidebar').classList.remove('-translate-x-full');
+  document.getElementById('mobileSidebar').classList.add('translate-x-0');
+}
 function closeSidebar() {
-  sidebar.classList.remove('translate-x-0');
-  sidebar.classList.add('-translate-x-full');
+  document.getElementById('mobileSidebar').classList.remove('translate-x-0');
+  document.getElementById('mobileSidebar').classList.add('-translate-x-full');
 }
 
-// Register/Login
+// Tradicional Register
 function register(){
   const name = document.getElementById('regName').value;
   const email = document.getElementById('regEmail').value;
-  const password
+  const password = document.getElementById('regPassword').value;
+  if(!name||!email||!password){alert("Preencha todos os campos!"); return;}
+  users.push({name,email,password});
+  localStorage.setItem('localUsers', JSON.stringify(users));
+  alert("Registrado com sucesso! Faça login.");
+  document.getElementById('loginEmail').value=email;
+  document.getElementById('loginPassword').value=password;
+  loginTab.click();
+}
+
+// Tradicional Login
+function login(){
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  const user = users.find(u=>u.email===email && u.password===password);
+  if(user){
+    alert(`Bem-vindo, ${user.name}!`);
+    localStorage.setItem('localLoggedUser', JSON.stringify(user));
+    closeModal();
+  } else { alert("E-mail ou senha inválidos!"); }
+}
+
+// Google Login
+function handleCredentialResponse(response){
+  console.log("JWT Google:", response.credential);
+  localStorage.setItem('googleToken', response.credential);
+  alert("Login com Google realizado!");
+  closeModal();
+}
+
+window.onload = function(){
+  google.accounts.id.initialize({client_id:"SEU_CLIENT_ID_AQUI",callback:handleCredentialResponse});
+  google.accounts.id.renderButton(document.getElementById("google-login-button"),{theme:"outline",size:"large",text:"signin_with"});
+  google.accounts.id.renderButton(document.getElementById("google-register-button"),{theme:"outline",size:"large",text:"signup_with"});
+};
+</script>
+</body>
+</html>
