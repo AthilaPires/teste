@@ -10,80 +10,90 @@
 <body class="min-h-screen flex flex-col bg-gray-900 text-white">
 
 <!-- Navbar -->
-<nav class="bg-black bg-opacity-80 backdrop-blur-md p-4 shadow-2xl flex justify-between items-center sticky top-0 z-50 transition-all duration-300">
-  <h1 class="text-2xl sm:text-3xl font-extrabold tracking-wide text-white animate-pulse">Clube de Física ⚡</h1>
+<nav class="bg-black bg-opacity-80 backdrop-blur-md p-3 shadow-2xl flex justify-between items-center sticky top-0 z-50 transition-all duration-300">
+  <h1 class="text-lg sm:text-2xl font-extrabold tracking-wide text-white animate-pulse">Clube de Física ⚡</h1>
 
   <!-- Menu Desktop -->
-  <ul class="hidden md:flex gap-8 text-sm sm:text-base font-semibold">
-    <li><a href="#sobre" class="text-white hover:text-cyan-400 transition transform hover:scale-110">Sobre</a></li>
-    <li><a href="#nucleos" class="text-white hover:text-cyan-400 transition transform hover:scale-110">Núcleos</a></li>
-    <li><a href="#atividades" class="text-white hover:text-cyan-400 transition transform hover:scale-110">Atividades</a></li>
-    <li><a href="#contato" class="text-white hover:text-cyan-400 transition transform hover:scale-110">Contato</a></li>
-    <li><button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-xl shadow-lg text-white font-bold hover:scale-110 transform transition">Login / Registrar</button></li>
+  <ul class="hidden md:flex gap-6 text-xs sm:text-sm md:text-base font-semibold">
+    <li><a href="#sobre" class="text-white hover:text-cyan-400 transition transform hover:scale-105">Sobre</a></li>
+    <li><a href="#nucleos" class="text-white hover:text-cyan-400 transition transform hover:scale-105">Núcleos</a></li>
+    <li><a href="#atividades" class="text-white hover:text-cyan-400 transition transform hover:scale-105">Atividades</a></li>
+    <li><a href="#contato" class="text-white hover:text-cyan-400 transition transform hover:scale-105">Contato</a></li>
+    <li>
+      <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-1.5 rounded-lg shadow-lg text-xs sm:text-sm font-bold hover:scale-105 transform transition">
+        Login / Registrar
+      </button>
+    </li>
   </ul>
 
-  <!-- Hamburger Mobile Horizontal -->
-  <div id="mobileMenuBtn" class="md:hidden flex flex-col justify-between w-8 h-6 cursor-pointer" onclick="openSidebar()">
-    <span class="block h-1 w-full bg-white rounded-full"></span>
-    <span class="block h-1 w-full bg-white rounded-full"></span>
-    <span class="block h-1 w-full bg-white rounded-full"></span>
+  <!-- Hamburger Mobile -->
+  <div id="mobileMenuBtn" class="md:hidden flex flex-col justify-between w-6 h-5 cursor-pointer" onclick="openSidebar()">
+    <span class="block h-0.5 w-full bg-white rounded-full"></span>
+    <span class="block h-0.5 w-full bg-white rounded-full"></span>
+    <span class="block h-0.5 w-full bg-white rounded-full"></span>
   </div>
 </nav>
 
-<!-- Sidebar Mobile Direita -->
-<div id="mobileSidebar" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 backdrop-blur-md transform translate-x-full transition-transform duration-300 z-50 p-6 flex flex-col shadow-xl">
-  <button onclick="closeSidebar()" class="self-end text-red-500 font-bold text-2xl hover:scale-125 transition">×</button>
-  <ul class="flex flex-col gap-6 mt-8 text-white font-semibold text-lg">
-    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span>🏠</span><a href="#sobre" onclick="closeSidebar()">Sobre</a></li>
-    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span>🧪</span><a href="#nucleos" onclick="closeSidebar()">Núcleos</a></li>
-    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span>📚</span><a href="#atividades" onclick="closeSidebar()">Atividades</a></li>
-    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span>✉️</span><a href="#contato" onclick="closeSidebar()">Contato</a></li>
-    <li><button onclick="openModal(); closeSidebar()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-xl shadow-lg text-white font-bold hover:scale-110 transform transition mt-4 w-full">Login / Registrar</button></li>
+<!-- Sidebar Mobile -->
+<div id="mobileSidebar" class="fixed top-0 right-0 h-full w-56 bg-black bg-opacity-95 backdrop-blur-md transform translate-x-full transition-transform duration-300 z-50 p-4 flex flex-col shadow-xl">
+  <button onclick="closeSidebar()" class="self-end text-red-500 font-bold text-xl hover:scale-110 transition">×</button>
+  <ul class="flex flex-col gap-4 mt-6 text-white font-semibold text-sm">
+    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span class="text-sm">🏠</span><a href="#sobre" onclick="closeSidebar()">Sobre</a></li>
+    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span class="text-sm">🧪</span><a href="#nucleos" onclick="closeSidebar()">Núcleos</a></li>
+    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span class="text-sm">📚</span><a href="#atividades" onclick="closeSidebar()">Atividades</a></li>
+    <li class="flex items-center gap-2 hover:text-cyan-400 transition transform hover:scale-105"><span class="text-sm">✉️</span><a href="#contato" onclick="closeSidebar()">Contato</a></li>
+    <li>
+      <button onclick="openModal(); closeSidebar()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-2 rounded-lg shadow-lg text-xs sm:text-sm font-bold hover:scale-105 transform transition mt-3 w-full">
+        Login / Registrar
+      </button>
+    </li>
   </ul>
 </div>
 
 <!-- Hero Section -->
-<section class="flex-1 flex flex-col items-center justify-center text-center p-6 sm:p-10 bg-[url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center relative">
-  <div class="overlay max-w-3xl bg-black bg-opacity-50 p-6 rounded-2xl">
-    <h2 class="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-4 animate-bounce">Bem-vindo ao Clube de Física</h2>
-    <p class="text-sm sm:text-base md:text-xl mb-6">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
-    <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-110 transform transition px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-2xl text-sm sm:text-lg font-semibold">Conheça nossos Núcleos</a>
+<section class="flex-1 flex flex-col items-center justify-center text-center p-4 sm:p-10 bg-[url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center relative">
+  <div class="overlay max-w-3xl bg-black bg-opacity-50 p-4 sm:p-6 rounded-2xl">
+    <h2 class="text-xl sm:text-4xl md:text-6xl font-extrabold mb-3 animate-bounce">Bem-vindo ao Clube de Física</h2>
+    <p class="text-xs sm:text-base md:text-xl mb-5">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
+    <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-105 transform transition px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-2xl text-xs sm:text-lg font-semibold">
+      Conheça nossos Núcleos
+    </a>
   </div>
 </section>
 
 <!-- Sobre -->
-<section id="sobre" class="py-12 sm:py-16 px-4 sm:px-20 relative bg-[url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
-  <div class="overlay max-w-4xl mx-auto text-center bg-black bg-opacity-50 p-6 rounded-2xl">
-    <h3 class="text-xl sm:text-3xl font-bold text-cyan-400 mb-4 sm:mb-6">Sobre o Clube</h3>
-    <p class="text-sm sm:text-base md:text-lg leading-relaxed">
+<section id="sobre" class="py-10 sm:py-16 px-3 sm:px-20 relative bg-[url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
+  <div class="overlay max-w-4xl mx-auto text-center bg-black bg-opacity-50 p-4 sm:p-6 rounded-2xl">
+    <h3 class="text-lg sm:text-3xl font-bold text-cyan-400 mb-3 sm:mb-6">Sobre o Clube</h3>
+    <p class="text-xs sm:text-base md:text-lg leading-relaxed">
       O Clube de Física é um espaço para mentes curiosas e apaixonadas pela ciência. Exploramos conceitos fundamentais, realizamos experimentos e desenvolvemos projetos inovadores que unem teoria e prática. 🌌
     </p>
   </div>
 </section>
 
 <!-- Núcleos -->
-<section id="nucleos" class="py-12 sm:py-16 px-4 sm:px-20 relative bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
+<section id="nucleos" class="py-10 sm:py-16 px-3 sm:px-20 relative bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
   <div class="overlay">
-    <h3 class="text-xl sm:text-3xl font-bold text-purple-400 text-center mb-8 sm:mb-10">Nossos Núcleos</h3>
-    <div class="grid md:grid-cols-2 gap-6 sm:gap-10">
-      <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
-        <img src="images/tesla.jpg" alt="Tesla" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-blue-500">
-        <h4 class="text-sm sm:text-xl font-semibold text-blue-400 mb-2 sm:mb-3">⚡ Tesla - Núcleo de Eletrofísica</h4>
+    <h3 class="text-lg sm:text-3xl font-bold text-purple-400 text-center mb-6 sm:mb-10">Nossos Núcleos</h3>
+    <div class="grid md:grid-cols-2 gap-4 sm:gap-8">
+      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
+        <img src="images/tesla.jpg" alt="Tesla" class="w-24 h-24 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-blue-500">
+        <h4 class="text-sm sm:text-xl font-semibold text-blue-400 mb-1 sm:mb-3">⚡ Tesla - Núcleo de Eletrofísica</h4>
         <p class="text-gray-200 text-xs sm:text-sm">Estudo da eletricidade, circuitos e fenômenos eletromagnéticos.</p>
       </div>
-      <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
-        <img src="images/nova_fisica.jpg" alt="Nova Física" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-green-500">
-        <h4 class="text-sm sm:text-xl font-semibold text-green-400 mb-2 sm:mb-3">📚 Nova Física</h4>
+      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
+        <img src="images/nova_fisica.jpg" alt="Nova Física" class="w-24 h-24 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-green-500">
+        <h4 class="text-sm sm:text-xl font-semibold text-green-400 mb-1 sm:mb-3">📚 Nova Física</h4>
         <p class="text-gray-200 text-xs sm:text-sm">Metodologias criativas aproximando a ciência ao dia a dia.</p>
       </div>
-      <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
-        <img src="images/robotica.jpg" alt="Robótica" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-yellow-500">
-        <h4 class="text-sm sm:text-xl font-semibold text-yellow-400 mb-2 sm:mb-3">🤖 Robótica</h4>
+      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
+        <img src="images/robotica.jpg" alt="Robótica" class="w-24 h-24 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-yellow-500">
+        <h4 class="text-sm sm:text-xl font-semibold text-yellow-400 mb-1 sm:mb-3">🤖 Robótica</h4>
         <p class="text-gray-200 text-xs sm:text-sm">Integra Física, programação e inovação tecnológica em protótipos inteligentes.</p>
       </div>
-      <div class="bg-black bg-opacity-70 p-4 sm:p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
-        <img src="images/nepa.jpg" alt="NEPA" class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-pink-500">
-        <h4 class="text-sm sm:text-xl font-semibold text-pink-400 mb-2 sm:mb-3">🚀 NEPA</h4>
+      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl text-center hover:scale-105 transition transform hover:shadow-2xl">
+        <img src="images/nepa.jpg" alt="NEPA" class="w-24 h-24 sm:w-40 sm:h-40 mx-auto mb-3 sm:mb-4 rounded-full shadow-lg border-2 border-pink-500">
+        <h4 class="text-sm sm:text-xl font-semibold text-pink-400 mb-1 sm:mb-3">🚀 NEPA</h4>
         <p class="text-gray-200 text-xs sm:text-sm">Foguetes experimentais, astronomia e aerodinâmica em prática.</p>
       </div>
     </div>
@@ -91,74 +101,74 @@
 </section>
 
 <!-- Atividades -->
-<section id="atividades" class="py-12 sm:py-16 px-4 sm:px-20 bg-gray-900">
+<section id="atividades" class="py-10 sm:py-16 px-3 sm:px-20 bg-gray-900">
   <div class="max-w-5xl mx-auto text-center">
-    <h3 class="text-xl sm:text-3xl font-bold text-cyan-400 mb-8">Atividades</h3>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl hover:scale-105 transition transform hover:shadow-2xl">
-        <h4 class="font-semibold text-lg text-blue-400 mb-2">Experimentos de Eletricidade</h4>
-        <p class="text-gray-200 text-sm">Montagem de circuitos e demonstrações de fenômenos eletromagnéticos.</p>
+    <h3 class="text-lg sm:text-3xl font-bold text-cyan-400 mb-6">Atividades</h3>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      <div class="bg-black bg-opacity-70 p-3 rounded-2xl shadow-xl hover:scale-105 transition transform hover:shadow-2xl">
+        <h4 class="font-semibold text-sm sm:text-lg text-blue-400 mb-1">Experimentos de Eletricidade</h4>
+        <p class="text-gray-200 text-xs sm:text-sm">Montagem de circuitos e demonstrações de fenômenos eletromagnéticos.</p>
       </div>
-      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl hover:scale-105 transition transform hover:shadow-2xl">
-        <h4 class="font-semibold text-lg text-green-400 mb-2">Oficinas de Robótica</h4>
-        <p class="text-gray-200 text-sm">Construção e programação de protótipos inteligentes.</p>
+      <div class="bg-black bg-opacity-70 p-3 rounded-2xl shadow-xl hover:scale-105 transition transform hover:shadow-2xl">
+        <h4 class="font-semibold text-sm sm:text-lg text-green-400 mb-1">Oficinas de Robótica</h4>
+        <p class="text-gray-200 text-xs sm:text-sm">Construção e programação de protótipos inteligentes.</p>
       </div>
-      <div class="bg-black bg-opacity-70 p-4 rounded-2xl shadow-xl hover:scale-105 transition transform hover:shadow-2xl">
-        <h4 class="font-semibold text-lg text-purple-400 mb-2">Astronomia e Foguetes</h4>
-        <p class="text-gray-200 text-sm">Observações celestes e lançamentos experimentais.</p>
+      <div class="bg-black bg-opacity-70 p-3 rounded-2xl shadow-xl hover:scale-105 transition transform hover:shadow-2xl">
+        <h4 class="font-semibold text-sm sm:text-lg text-purple-400 mb-1">Astronomia e Foguetes</h4>
+        <p class="text-gray-200 text-xs sm:text-sm">Observações celestes e lançamentos experimentais.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Contato -->
-<section id="contato" class="py-12 sm:py-16 px-4 sm:px-20 relative bg-[url('https://images.unsplash.com/photo-1520975918318-3e94c5f0f54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
-  <div class="overlay text-center bg-black bg-opacity-50 p-6 rounded-2xl max-w-lg mx-auto">
-    <h3 class="text-xl sm:text-3xl font-bold text-purple-300 mb-6">Entre em Contato</h3>
-    <form action="mailto:athila.pires09@aluno.ifce.edu.br" method="post" enctype="text/plain" class="space-y-4">
-      <input type="text" name="nome" placeholder="Seu nome" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base">
-      <input type="email" name="email" placeholder="Seu e-mail" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base">
-      <textarea name="mensagem" placeholder="Sua mensagem" rows="4" class="w-full p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-sm sm:text-base"></textarea>
-      <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-110 transform transition px-6 py-3 rounded-xl shadow-lg font-semibold text-sm sm:text-base">Enviar</button>
+<section id="contato" class="py-10 sm:py-16 px-3 sm:px-20 relative bg-[url('https://images.unsplash.com/photo-1520975918318-3e94c5f0f54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
+  <div class="overlay text-center bg-black bg-opacity-50 p-4 sm:p-6 rounded-2xl max-w-lg mx-auto">
+    <h3 class="text-lg sm:text-3xl font-bold text-purple-300 mb-4 sm:mb-6">Entre em Contato</h3>
+    <form action="mailto:athila.pires09@aluno.ifce.edu.br" method="post" enctype="text/plain" class="space-y-3">
+      <input type="text" name="nome" placeholder="Seu nome" class="w-full p-2 sm:p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-xs sm:text-base">
+      <input type="email" name="email" placeholder="Seu e-mail" class="w-full p-2 sm:p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-xs sm:text-base">
+      <textarea name="mensagem" placeholder="Sua mensagem" rows="4" class="w-full p-2 sm:p-3 rounded-xl border border-gray-500 bg-black bg-opacity-40 text-white text-xs sm:text-base"></textarea>
+      <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-105 transform transition px-4 py-2 sm:px-6 sm:py-3 rounded-xl shadow-lg font-semibold text-xs sm:text-base">Enviar</button>
     </form>
   </div>
 </section>
 
 <!-- Modal Login/Registro -->
 <div id="authModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 transition-opacity duration-500">
-  <div class="bg-gray-900 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 sm:p-10 transform scale-90 opacity-0 transition-all duration-500 relative">
+  <div class="bg-gray-900 rounded-3xl shadow-2xl w-11/12 max-w-md p-4 sm:p-10 transform scale-90 opacity-0 transition-all duration-500 relative">
     <div class="absolute inset-0 rounded-3xl overflow-hidden opacity-20">
       <img src="https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Física" class="w-full h-full object-cover">
     </div>
-    <div class="flex justify-center mb-6 relative z-10">
-      <button id="loginTab" class="px-6 py-2 font-bold border-b-2 border-blue-500 text-blue-400 transition">Login</button>
-      <button id="registerTab" class="px-6 py-2 font-bold border-b-2 border-transparent text-white hover:border-green-500 hover:text-green-400 transition">Registrar</button>
+    <div class="flex justify-center mb-4 sm:mb-6 relative z-10 text-sm sm:text-base">
+      <button id="loginTab" class="px-4 sm:px-6 py-1.5 sm:py-2 font-bold border-b-2 border-blue-500 text-blue-400 transition">Login</button>
+      <button id="registerTab" class="px-4 sm:px-6 py-1.5 sm:py-2 font-bold border-b-2 border-transparent text-white hover:border-green-500 hover:text-green-400 transition">Registrar</button>
     </div>
-    <div id="loginForm" class="relative z-10 space-y-3">
-      <input type="email" id="loginEmail" placeholder="E-mail" class="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+    <div id="loginForm" class="relative z-10 space-y-2 sm:space-y-3 text-xs sm:text-sm">
+      <input type="email" id="loginEmail" placeholder="E-mail" class="w-full p-2 sm:p-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
       <div class="relative">
-        <input type="password" id="loginPassword" placeholder="Senha" class="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white pr-10">
-        <button type="button" onclick="togglePassword('loginPassword')" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white">👁️</button>
+        <input type="password" id="loginPassword" placeholder="Senha" class="w-full p-2 sm:p-3 rounded-lg border border-gray-600 bg-gray-800 text-white pr-8 sm:pr-10">
+        <button type="button" onclick="togglePassword('loginPassword')" class="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white">👁️</button>
       </div>
-      <button onclick="login()" class="w-full bg-blue-600 py-3 rounded-lg font-bold hover:bg-blue-800 transition">Entrar</button>
+      <button onclick="login()" class="w-full bg-blue-600 py-2 sm:py-3 rounded-lg font-bold hover:bg-blue-800 transition">Entrar</button>
       <div id="google-login-button"></div>
     </div>
-    <div id="registerForm" class="hidden relative z-10 space-y-3">
-      <input type="text" id="regName" placeholder="Nome" class="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
-      <input type="email" id="regEmail" placeholder="E-mail" class="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+    <div id="registerForm" class="hidden relative z-10 space-y-2 sm:space-y-3 text-xs sm:text-sm">
+      <input type="text" id="regName" placeholder="Nome" class="w-full p-2 sm:p-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
+      <input type="email" id="regEmail" placeholder="E-mail" class="w-full p-2 sm:p-3 rounded-lg border border-gray-600 bg-gray-800 text-white">
       <div class="relative">
-        <input type="password" id="regPassword" placeholder="Senha" class="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-white pr-10">
-        <button type="button" onclick="togglePassword('regPassword')" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white">👁️</button>
+        <input type="password" id="regPassword" placeholder="Senha" class="w-full p-2 sm:p-3 rounded-lg border border-gray-600 bg-gray-800 text-white pr-8 sm:pr-10">
+        <button type="button" onclick="togglePassword('regPassword')" class="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white">👁️</button>
       </div>
-      <button onclick="register()" class="w-full bg-green-600 py-3 rounded-lg font-bold hover:bg-green-800 transition">Registrar</button>
+      <button onclick="register()" class="w-full bg-green-600 py-2 sm:py-3 rounded-lg font-bold hover:bg-green-800 transition">Registrar</button>
       <div id="google-register-button"></div>
     </div>
-    <button onclick="closeModal()" class="absolute top-4 right-4 text-red-500 font-bold text-xl z-10 hover:scale-125 transition">×</button>
+    <button onclick="closeModal()" class="absolute top-3 sm:top-4 right-3 sm:right-4 text-red-500 font-bold text-lg sm:text-xl z-10 hover:scale-110 transition">×</button>
   </div>
 </div>
 
 <!-- Footer -->
-<footer class="bg-black bg-opacity-80 text-gray-300 text-center py-6 mt-10">
+<footer class="bg-black bg-opacity-80 text-gray-300 text-center py-4 sm:py-6 mt-10 text-xs sm:text-sm">
   <p>&copy; 2025 Clube de Física | Desenvolvido para GitHub Pages</p>
 </footer>
 
@@ -169,64 +179,8 @@ let users = JSON.parse(localStorage.getItem('localUsers') || '[]');
 function openModal() {
   const modal = document.getElementById('authModal');
   modal.classList.remove('hidden');
-  setTimeout(()=>{ modal.querySelector('div').classList.remove('opacity-0','scale-90'); modal.querySelector('div').classList.add('opacity-100','scale-100'); },50);
-}
-function closeModal() {
-  const modal = document.getElementById('authModal');
-  modal.querySelector('div').classList.remove('opacity-100','scale-100');
-  modal.querySelector('div').classList.add('opacity-0','scale-90');
-  setTimeout(()=> modal.classList.add('hidden'),300);
-}
+  setTimeout(()=>{ modal.querySelector('div').classList.remove('opacity-0','scale-90'); modal.querySelector
 
-// Password toggle
-function togglePassword(id){
-  const input = document.getElementById(id);
-  input.type = input.type==='password'?'text':'password';
-}
-
-// Tabs
-const loginTab = document.getElementById('loginTab');
-const registerTab = document.getElementById('registerTab');
-loginTab.addEventListener('click',()=>{ document.getElementById('loginForm').classList.remove('hidden'); document.getElementById('registerForm').classList.add('hidden'); loginTab.classList.add('border-blue-500','text-blue-400'); registerTab.classList.remove('border-green-500','text-green-400');});
-registerTab.addEventListener('click',()=>{ document.getElementById('loginForm').classList.add('hidden'); document.getElementById('registerForm').classList.remove('hidden'); loginTab.classList.remove('border-blue-500','text-blue-400'); registerTab.classList.add('border-green-500','text-green-400');});
-
-// Sidebar
-function openSidebar(){ document.getElementById('mobileSidebar').classList.remove('translate-x-full'); document.getElementById('mobileSidebar').classList.add('translate-x-0'); }
-function closeSidebar(){ document.getElementById('mobileSidebar').classList.remove('translate-x-0'); document.getElementById('mobileSidebar').classList.add('translate-x-full'); }
-
-// Register/Login
-function register(){
-  const name=document.getElementById('regName').value;
-  const email=document.getElementById('regEmail').value;
-  const password=document.getElementById('regPassword').value;
-  if(!name||!email||!password){alert("Preencha todos os campos!");return;}
-  users.push({name,email,password});
-  localStorage.setItem('localUsers',JSON.stringify(users));
-  alert("Registrado com sucesso! Faça login.");
-  document.getElementById('loginEmail').value=email;
-  document.getElementById('loginPassword').value=password;
-  loginTab.click();
-}
-function login(){
-  const email=document.getElementById('loginEmail').value;
-  const password=document.getElementById('loginPassword').value;
-  const user=users.find(u=>u.email===email&&u.password===password);
-  if(user){alert(`Bem-vindo, ${user.name}!`); localStorage.setItem('localLoggedUser',JSON.stringify(user)); closeModal();}
-  else{alert("E-mail ou senha inválidos!");}
-}
-
-// Google Sign-in
-function handleCredentialResponse(response){
-  console.log("JWT Google:",response.credential);
-  localStorage.setItem('googleToken',response.credential);
-  alert("Login com Google realizado!");
-  closeModal();
-}
-window.onload=function(){
-  google.accounts.id.initialize({client_id:"SEU_CLIENT_ID_AQUI",callback:handleCredentialResponse});
-  google.accounts.id.renderButton(document.getElementById("google-login-button"),{theme:"outline",size:"large",text:"signin_with"});
-  google.accounts.id.renderButton(document.getElementById("google-register-button"),{theme:"outline",size:"large",text:"signup_with"});
-};
 </script>
 
 </body>
