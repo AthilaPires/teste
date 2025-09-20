@@ -1,134 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clube de Física</title>
+  <title>Clube de Física - IFCE Sobral</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+<body class="bg-gray-900 text-white font-sans">
 
   <!-- Navbar -->
-  <nav class="bg-black bg-opacity-80 backdrop-blur-md p-3 shadow-2xl flex justify-between items-center sticky top-0 z-50">
-    <h1 class="text-lg sm:text-2xl font-extrabold tracking-wide text-white animate-pulse">Clube de Física ⚡</h1>
-
-    <!-- Menu Desktop -->
-    <ul class="hidden md:flex gap-6 text-xs sm:text-sm md:text-base font-semibold">
-      <li><a href="#sobre" class="hover:text-cyan-400 transition">Sobre</a></li>
-      <li><a href="#nucleos" class="hover:text-cyan-400 transition">Núcleos</a></li>
-      <li><a href="#atividades" class="hover:text-cyan-400 transition">Atividades</a></li>
-      <li><a href="#contato" class="hover:text-cyan-400 transition">Contato</a></li>
-      <li>
-        <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-1.5 rounded-lg shadow-lg text-xs sm:text-sm font-bold hover:scale-105 transform transition">
-          Login / Registrar
-        </button>
-      </li>
-    </ul>
-
-    <!-- Hamburger Mobile -->
-    <div id="mobileMenuBtn" class="md:hidden flex flex-col justify-between w-6 h-5 cursor-pointer" onclick="openSidebar()">
-      <span class="block h-0.5 w-full bg-white"></span>
-      <span class="block h-0.5 w-full bg-white"></span>
-      <span class="block h-0.5 w-full bg-white"></span>
+  <nav class="bg-gray-800 fixed w-full z-50 shadow-lg">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <h1 class="text-xl sm:text-2xl font-bold text-blue-400">Clube de Física</h1>
+      <ul class="hidden md:flex space-x-6 text-gray-200">
+        <li><a href="#home" class="hover:text-blue-400">Início</a></li>
+        <li><a href="#nucleos" class="hover:text-blue-400">Núcleos</a></li>
+        <li><a href="#sobre" class="hover:text-blue-400">Sobre</a></li>
+        <li><a href="#contato" class="hover:text-blue-400">Contato</a></li>
+      </ul>
+      <button class="md:hidden text-gray-200 focus:outline-none" id="menu-btn">☰</button>
+    </div>
+    <!-- Menu Mobile -->
+    <div class="hidden bg-gray-700 md:hidden flex-col space-y-4 px-4 pb-4" id="mobile-menu">
+      <a href="#home" class="block hover:text-blue-400">Início</a>
+      <a href="#nucleos" class="block hover:text-blue-400">Núcleos</a>
+      <a href="#sobre" class="block hover:text-blue-400">Sobre</a>
+      <a href="#contato" class="block hover:text-blue-400">Contato</a>
     </div>
   </nav>
 
-  <!-- Sidebar Mobile -->
-  <div id="mobileSidebar" class="fixed top-0 right-0 h-full w-56 bg-black bg-opacity-95 backdrop-blur-md transform translate-x-full transition-transform duration-300 z-50 p-4 flex flex-col shadow-xl">
-    <button onclick="closeSidebar()" class="self-end text-red-500 font-bold text-xl hover:scale-110">×</button>
-    <ul class="flex flex-col gap-4 mt-6 text-white font-semibold text-sm">
-      <li><a href="#sobre" onclick="closeSidebar()" class="hover:text-cyan-400">🏠 Sobre</a></li>
-      <li><a href="#nucleos" onclick="closeSidebar()" class="hover:text-cyan-400">🧪 Núcleos</a></li>
-      <li><a href="#atividades" onclick="closeSidebar()" class="hover:text-cyan-400">📚 Atividades</a></li>
-      <li><a href="#contato" onclick="closeSidebar()" class="hover:text-cyan-400">✉️ Contato</a></li>
-      <li>
-        <button onclick="openModal(); closeSidebar()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-2 rounded-lg shadow-lg text-xs font-bold mt-3 w-full">
-          Login / Registrar
-        </button>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Hero com Carrossel -->
-  <section class="relative w-full h-[80vh] overflow-hidden">
+  <!-- Hero com Slider -->
+  <section id="home" class="relative w-full h-[80vh] overflow-hidden">
     <div id="slider" class="absolute inset-0 flex transition-transform duration-700">
-      <!-- Slide 1 -->
       <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('IFCE-800x445-1.jpg');"></div>
-      <!-- Slide 2 -->
       <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('images (1).jpeg');"></div>
-      <!-- Slide 3 -->
-      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581091012184-5c8a0d33bd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
     </div>
-
-    <!-- Overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-6">
-      <h2 class="text-xl sm:text-4xl md:text-6xl font-extrabold mb-3 animate-bounce">Bem-vindo ao Clube de Física ⚡</h2>
-      <p class="text-xs sm:text-base md:text-lg mb-5">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
-      <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-105 px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-2xl text-xs sm:text-lg font-semibold">
-        Conheça nossos Núcleos
-      </a>
+      <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-4 animate-bounce">Clube de Física ⚡</h2>
+      <p class="text-base md:text-lg text-gray-200 mb-6">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
+      <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-105 transform transition px-6 py-3 rounded-xl shadow-2xl text-lg font-semibold text-white">Conheça nossos Núcleos</a>
     </div>
   </section>
 
-  <!-- Seção Sobre -->
-  <section id="sobre" class="py-12 px-6 text-center bg-gray-800">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-4">Sobre o Clube</h2>
-    <p class="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto">
-      O Clube de Física é um espaço de aprendizado e experimentação científica, promovendo o interesse pela ciência através de atividades práticas e projetos inovadores.
-    </p>
-  </section>
-
-  <!-- Seção Núcleos -->
-  <section id="nucleos" class="py-12 px-6 text-center bg-gray-900">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-8">Nossos Núcleos</h2>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Núcleo de Eletricidade</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Explorando conceitos de circuitos e eletromagnetismo.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Núcleo de Mecânica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Estudo do movimento, forças e energia.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Núcleo de Óptica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Luz, reflexão, refração e experimentos ópticos.</p>
+  <!-- Núcleos -->
+  <section id="nucleos" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-10">Nossos Núcleos</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-semibold mb-4 text-white">Núcleo de Óptica 🔬</h3>
+          <p class="text-gray-300">Explorando fenômenos da luz e suas aplicações em tecnologias modernas.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-semibold mb-4 text-white">Núcleo de Eletricidade ⚡</h3>
+          <p class="text-gray-300">Estudos práticos sobre circuitos, energia elétrica e eletrônica aplicada.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-semibold mb-4 text-white">Núcleo de Mecânica ⚙️</h3>
+          <p class="text-gray-300">Analisando movimentos, forças e aplicações da física no dia a dia.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Seção Atividades -->
-  <section id="atividades" class="py-12 px-6 text-center bg-gray-800">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-8">Atividades</h2>
-    <p class="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto mb-6">
-      Realizamos oficinas, experimentos práticos, palestras e competições científicas para estimular o pensamento crítico e criativo.
-    </p>
+  <!-- Sobre -->
+  <section id="sobre" class="py-16 bg-gray-800">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-purple-400 mb-6">Sobre o Clube</h2>
+      <p class="text-gray-300 max-w-3xl mx-auto">
+        O Clube de Física do IFCE Sobral é um espaço de aprendizado colaborativo, onde estudantes e professores exploram os fenômenos físicos por meio de experimentos, projetos e debates. Nossa missão é despertar a curiosidade científica e incentivar a inovação tecnológica.
+      </p>
+    </div>
   </section>
 
-  <!-- Seção Contato -->
-  <section id="contato" class="py-12 px-6 text-center bg-gray-900">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-4">Contato</h2>
-    <p class="text-sm sm:text-base text-gray-300 mb-4">Entre em contato pelo e-mail: <span class="text-cyan-400">fisica@ifce.edu.br</span></p>
-    <p class="text-sm sm:text-base text-gray-300">📍 Instituto Federal do Ceará - Campus Sobral</p>
+  <!-- Contato -->
+  <section id="contato" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6">Entre em Contato</h2>
+      <p class="text-gray-300 mb-4">📧 <a href="mailto:fisica.sobral@ifce.edu.br" class="text-blue-400 hover:underline">fisica.sobral@ifce.edu.br</a></p>
+      <p class="text-gray-300">📍 Instituto Federal do Ceará - Campus Sobral</p>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black py-6 text-center text-xs sm:text-sm text-gray-400">
-    © 2025 Clube de Física - IFCE. Todos os direitos reservados.
+  <footer class="bg-gray-800 py-6 text-center text-gray-400 text-sm">
+    © 2025 Clube de Física - IFCE Sobral. Todos os direitos reservados.  
+    <br>
+    Contato: <a href="mailto:fisica.sobral@ifce.edu.br" class="text-blue-400 hover:underline">fisica.sobral@ifce.edu.br</a>
   </footer>
 
-  <!-- Modal Login -->
-  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
-    <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-80 sm:w-96 text-center">
-      <h2 class="text-lg sm:text-xl font-bold mb-4">Login / Registrar</h2>
-      <input type="email" placeholder="Email" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
-      <input type="password" placeholder="Senha" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
-      <button class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Entrar</button>
-      <button onclick="closeModal()" class="mt-4 text-red-400 hover:underline text-xs sm:text-sm">Fechar</button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
+  <!-- Script Slider e Menu -->
   <script>
     const slider = document.getElementById('slider');
     let index = 0;
@@ -138,11 +101,13 @@
     }
     setInterval(moveSlide, 4000);
 
-    function openSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(0)';}
-    function closeSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(100%)';}
-    function openModal(){document.getElementById('loginModal').classList.remove('hidden');}
-    function closeModal(){document.getElementById('loginModal').classList.add('hidden');}
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
   </script>
 
 </body>
 </html>
+
