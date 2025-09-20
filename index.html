@@ -49,29 +49,37 @@
     </ul>
   </div>
 
-   <!-- Hero com Carrossel -->
-  <section class="relative w-full h-[80vh] overflow-hidden">
-    <div id="slide1r" class="absolute inset-0 flex transition-transform duration-700">
-     <div id="slider2" class="absolute inset-0 flex transition-transform duration-700">
-     <div id="slider3" class="absolute inset-0 flex transition-transform duration-700">
-    
+  <!-- Hero com Carrossel -->
+  <section class="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+    <div id="slider" class="flex w-full h-full transition-transform duration-700">
       <!-- Slide 1 -->
-<div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('images/imagem1.jpg');"></div>
-<!-- Slide 2 -->
-<div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('naruto.jpg');"></div>
-<!-- Slide 3 -->
-<div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('boruto.jpg');"></div>
-
+      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('images/imagem1.png');"></div>
+      <!-- Slide 2 -->
+      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('naruto.jpg');"></div>
+      <!-- Slide 3 -->
+      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('boruto.jpg');"></div>
     </div>
+
+    <!-- Texto central -->
     <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-6">
-      <h2 class="text-xl sm:text-4xl md:text-6xl font-extrabold mb-3 animate-bounce">Bem-vindo ao Clube de Física ⚡</h2>
+      <h2 class="text-lg sm:text-4xl md:text-6xl font-extrabold mb-3 animate-bounce">Bem-vindo ao Clube de Física ⚡</h2>
       <p class="text-xs sm:text-base md:text-lg mb-5">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
       <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-105 px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-2xl text-xs sm:text-lg font-semibold">
         Conheça nossos Núcleos
       </a>
     </div>
-  </section>
 
+    <!-- Botões -->
+    <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:scale-110">⬅️</button>
+    <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:scale-110">➡️</button>
+
+    <!-- Indicadores -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+      <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot0"></span>
+      <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot1"></span>
+      <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot2"></span>
+    </div>
+  </section>
 
   <!-- Seção Sobre -->
   <section id="sobre" class="py-12 px-6 text-center bg-gray-800">
@@ -86,16 +94,16 @@
     <h2 class="text-2xl sm:text-4xl font-bold mb-8">Nossos Núcleos</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Tesla - Núcleo de Estudos e Práticas de Eletrofísica </h3>
-        <p class="text-xs sm:text-sm text-gray-400">O projeto combina teoria e prática da eletricidade e física. Serão realizados experimentos.</p>
+        <h3 class="text-lg font-bold mb-2">Tesla - Núcleo de Eletrofísica</h3>
+        <p class="text-xs sm:text-sm text-gray-400">Estudo prático e teórico da eletricidade e circuitos.</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
         <h3 class="text-lg font-bold mb-2">Núcleo de Mecânica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Estudo do movimento, forças e energia.</p>
+        <p class="text-xs sm:text-sm text-gray-400">Movimento, forças e energia em experimentos aplicados.</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
         <h3 class="text-lg font-bold mb-2">Núcleo de Óptica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Luz, reflexão, refração e experimentos ópticos.</p>
+        <p class="text-xs sm:text-sm text-gray-400">Luz, reflexão, refração e óptica aplicada.</p>
       </div>
     </div>
   </section>
@@ -104,14 +112,14 @@
   <section id="atividades" class="py-12 px-6 text-center bg-gray-800">
     <h2 class="text-2xl sm:text-4xl font-bold mb-8">Atividades</h2>
     <p class="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto mb-6">
-      Realizamos oficinas, experimentos práticos, palestras e competições científicas para estimular o pensamento crítico e criativo.
+      Oficinas, experimentos práticos, palestras e competições científicas que estimulam a curiosidade e o pensamento crítico.
     </p>
   </section>
 
   <!-- Seção Contato -->
   <section id="contato" class="py-12 px-6 text-center bg-gray-900">
     <h2 class="text-2xl sm:text-4xl font-bold mb-4">Contato</h2>
-    <p class="text-sm sm:text-base text-gray-300 mb-4">Entre em contato pelo e-mail: <span class="text-cyan-400">fisica.sobral@ifce.edu.br</span></p>
+    <p class="text-sm sm:text-base text-gray-300 mb-4">📧 <span class="text-cyan-400">fisica.sobral@ifce.edu.br</span></p>
     <p class="text-sm sm:text-base text-gray-300">📍 Instituto Federal do Ceará - Campus Sobral</p>
   </section>
 
@@ -123,7 +131,7 @@
   <!-- Modal Login -->
   <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
     <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-80 sm:w-96 text-center">
-      <h2 class="text-lg sm:text-xl font-bold mb-4">Login / Registrar</h2>
+      <h2 class="text-lg sm:text-xl font-bold mb-4">Login
       <input type="email" placeholder="Email" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
       <input type="password" placeholder="Senha" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
       <button class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Entrar</button>
@@ -134,12 +142,32 @@
   <!-- Scripts -->
   <script>
     const slider = document.getElementById('slider');
+    const dots = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
     let index = 0;
-    function moveSlide() {
-      index = (index + 1) % slider.children.length;
-      slider.style.transform = `translateX(-${index * 100}%)`;
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.style.opacity = (i === index) ? "1" : "0.5";
+      });
     }
-    setInterval(moveSlide, 4000);
+
+    function moveSlide() {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slider.children.length;
+      moveSlide();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slider.children.length) % slider.children.length;
+      moveSlide();
+    }
+
+    setInterval(nextSlide, 4000);
+    updateDots();
 
     function openSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(0)';}
     function closeSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(100%)';}
