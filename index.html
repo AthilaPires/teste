@@ -16,12 +16,48 @@
 
   <!-- Conteúdo -->
   <main class="flex-grow">
-    <section class="text-center py-16">
+
+    <!-- Apresentação -->
+    <section class="text-center py-16 px-4">
       <h2 class="text-3xl sm:text-5xl font-bold mb-4">Bem-vindo ao Clube de Física</h2>
-      <p class="text-gray-300 text-sm sm:text-base">Aprenda, descubra e compartilhe ciência! 🚀</p>
+      <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+        Espaço para explorar, aprender e compartilhar a Física de maneira prática, divertida e colaborativa! 🚀
+      </p>
     </section>
 
-    <!-- Seção Notícias -->
+    <!-- Núcleo -->
+    <section class="py-12 px-6 bg-gray-800 text-center">
+      <h2 class="text-2xl sm:text-4xl font-bold mb-6">👨‍🔬 Núcleo</h2>
+      <p class="text-gray-300 max-w-3xl mx-auto">
+        O Núcleo do Clube de Física reúne estudantes, professores e entusiastas da ciência em atividades de ensino,
+        pesquisa e extensão. Nosso objetivo é criar experiências únicas que aproximem a Física do cotidiano.
+      </p>
+    </section>
+
+    <!-- Atividades -->
+    <section class="py-12 px-6 text-center">
+      <h2 class="text-2xl sm:text-4xl font-bold mb-8">📚 Atividades</h2>
+      <div class="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Palestras</h3>
+          <p class="text-gray-300 text-sm">Eventos abertos com professores e convidados especiais abordando temas modernos da Física.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Experimentos</h3>
+          <p class="text-gray-300 text-sm">Oficinas práticas e demonstrações que tornam a ciência tangível e divertida.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Estudos</h3>
+          <p class="text-gray-300 text-sm">Grupos de estudo colaborativos para aprofundar conteúdos e explorar novos conceitos.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Eventos</h3>
+          <p class="text-gray-300 text-sm">Feiras, competições e mostras científicas para compartilhar descobertas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notícias -->
     <section id="noticias" class="py-12 px-6 text-center bg-gray-800">
       <h2 class="text-2xl sm:text-4xl font-bold mb-8">📰 Notícias & Eventos</h2>
       <div id="noticiasLista" class="grid gap-6 max-w-4xl mx-auto"></div>
@@ -56,6 +92,7 @@
         <input id="titulo" type="text" placeholder="Título da Notícia" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" required>
         <textarea id="conteudo" placeholder="Digite o conteúdo..." class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" rows="4" required></textarea>
         <input id="imagem" type="file" accept="image/*" class="w-full mb-3 text-sm text-gray-300">
+        <input id="pdf" type="file" accept="application/pdf" class="w-full mb-3 text-sm text-gray-300">
         <button type="submit" class="bg-gradient-to-r from-green-500 to-blue-600 px-4 py-2 rounded-lg font-bold w-full text-sm">📢 Publicar</button>
       </form>
 
@@ -65,12 +102,10 @@
   </div>
 
   <script>
-    // Abrir/fechar modais
     function openModal() { document.getElementById("loginModal").classList.remove("hidden"); }
     function closeModal() { document.getElementById("loginModal").classList.add("hidden"); }
     function logout() { document.getElementById("adminPanel").classList.add("hidden"); }
 
-    // Login fixo
     function login() {
       const email = document.getElementById('email').value;
       const senha = document.getElementById('password').value;
@@ -83,55 +118,58 @@
       }
     }
 
-    // Lista de notícias
     let noticias = JSON.parse(localStorage.getItem("noticias")) || [];
 
-    // Publicar nova notícia
     const form = document.getElementById('newsForm');
     form.addEventListener("submit", e => {
       e.preventDefault();
       const titulo = document.getElementById("titulo").value;
       const conteudo = document.getElementById("conteudo").value;
       const imgInput = document.getElementById("imagem");
+      const pdfInput = document.getElementById("pdf");
       let imagemURL = "";
+      let pdfURL = "";
 
       if (imgInput.files.length > 0) {
         imagemURL = URL.createObjectURL(imgInput.files[0]);
       }
+      if (pdfInput.files.length > 0) {
+        pdfURL = URL.createObjectURL(pdfInput.files[0]);
+      }
 
-      noticias.push({ titulo, conteudo, imagem: imagemURL });
+      noticias.push({ titulo, conteudo, imagem: imagemURL, pdf: pdfURL });
       localStorage.setItem("noticias", JSON.stringify(noticias));
       form.reset();
       renderNoticias();
       renderNoticiasAdmin();
     });
 
-    // Render público
     function renderNoticias() {
       const lista = document.getElementById("noticiasLista");
       lista.innerHTML = "";
       noticias.forEach((n, i) => {
         lista.innerHTML += `
-          <div class="bg-gray-900 p-4 rounded-lg shadow-lg hover:scale-105 transform transition">
-            ${n.imagem ? `<img src="${n.imagem}" class="w-full h-48 object-cover rounded mb-3">` : ""}
-            <h3 class="text-lg font-bold">${n.titulo}</h3>
-            <p class="text-sm text-gray-300">${n.conteudo}</p>
+          <div class="bg-gray-900 p-4 rounded-lg shadow-lg hover:scale-105 transform transition text-left">
+            ${n.imagem ? `<img src="${n.imagem}" class="w-full rounded mb-3 object-contain">` : ""}
+            <h3 class="text-lg font-bold mb-1">${n.titulo}</h3>
+            <p class="text-sm text-gray-300 mb-2">${n.conteudo}</p>
+            ${n.pdf ? `<a href="${n.pdf}" target="_blank" class="text-cyan-400 text-sm">📄 Ver PDF</a>` : ""}
           </div>
         `;
       });
     }
 
-    // Render admin
     function renderNoticiasAdmin() {
       const lista = document.getElementById("listaNoticiasAdmin");
       lista.innerHTML = "";
       noticias.forEach((n, i) => {
         lista.innerHTML += `
           <div class="bg-gray-800 p-4 rounded shadow-lg flex flex-col sm:flex-row gap-4 items-center">
-            ${n.imagem ? `<img src="${n.imagem}" class="w-24 h-24 object-cover rounded">` : ""}
+            ${n.imagem ? `<img src="${n.imagem}" class="w-24 h-24 object-contain rounded">` : ""}
             <div class="flex-1 text-left">
               <h3 class="text-lg font-bold">${n.titulo}</h3>
               <p class="text-sm text-gray-300">${n.conteudo}</p>
+              ${n.pdf ? `<a href="${n.pdf}" target="_blank" class="text-cyan-400 text-xs">📄 PDF anexado</a>` : ""}
             </div>
             <button onclick="excluirNoticia(${i})" class="bg-red-500 px-3 py-1 rounded text-sm font-bold">Excluir</button>
           </div>
@@ -139,7 +177,6 @@
       });
     }
 
-    // Excluir notícia
     function excluirNoticia(index) {
       noticias.splice(index, 1);
       localStorage.setItem("noticias", JSON.stringify(noticias));
@@ -147,9 +184,10 @@
       renderNoticiasAdmin();
     }
 
-    // Inicializar
     renderNoticias();
   </script>
 </body>
 </html>
+
+
 
