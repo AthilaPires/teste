@@ -1,137 +1,42 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clube de Física</title>
+  <title>Clube de Física - IFCE</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white min-h-screen flex flex-col">
 
   <!-- Navbar -->
-  <nav class="bg-black bg-opacity-80 backdrop-blur-md p-3 shadow-2xl flex justify-between items-center sticky top-0 z-50">
-    <h1 class="text-lg sm:text-2xl font-extrabold tracking-wide text-white animate-pulse">Clube de Física ⚡</h1>
-
-    <!-- Menu Desktop -->
-    <ul class="hidden md:flex gap-6 text-xs sm:text-sm md:text-base font-semibold">
-      <li><a href="#sobre" class="hover:text-cyan-400 transition">Sobre</a></li>
-      <li><a href="#nucleos" class="hover:text-cyan-400 transition">Núcleos</a></li>
-      <li><a href="#atividades" class="hover:text-cyan-400 transition">Atividades</a></li>
-      <li><a href="#noticias" class="hover:text-cyan-400 transition">Notícias</a></li>
-      <li><a href="#contato" class="hover:text-cyan-400 transition">Contato</a></li>
-      <li>
-        <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-1.5 rounded-lg shadow-lg text-xs sm:text-sm font-bold hover:scale-105 transform transition">
-          Login / Registrar
-        </button>
-      </li>
-    </ul>
-
-    <!-- Hamburger Mobile -->
-    <div id="mobileMenuBtn" class="md:hidden flex flex-col justify-between w-6 h-5 cursor-pointer" onclick="openSidebar()">
-      <span class="block h-0.5 w-full bg-white"></span>
-      <span class="block h-0.5 w-full bg-white"></span>
-      <span class="block h-0.5 w-full bg-white"></span>
-    </div>
+  <nav class="bg-gray-800 p-4 flex justify-between items-center shadow-lg">
+    <h1 class="text-xl sm:text-2xl font-bold">⚡ Clube de Física</h1>
+    <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold">Login</button>
   </nav>
 
-  <!-- Sidebar Mobile -->
-  <div id="mobileSidebar" class="fixed top-0 right-0 h-full w-56 bg-black bg-opacity-95 backdrop-blur-md transform translate-x-full transition-transform duration-300 z-50 p-4 flex flex-col shadow-xl">
-    <button onclick="closeSidebar()" class="self-end text-red-500 font-bold text-xl hover:scale-110">×</button>
-    <ul class="flex flex-col gap-4 mt-6 text-white font-semibold text-sm">
-      <li><a href="#sobre" onclick="closeSidebar()" class="hover:text-cyan-400">🏠 Sobre</a></li>
-      <li><a href="#nucleos" onclick="closeSidebar()" class="hover:text-cyan-400"> Núcleos</a></li>
-      <li><a href="#atividades" onclick="closeSidebar()" class="hover:text-cyan-400"> Atividades</a></li>
-      <li><a href="#noticias" onclick="closeSidebar()" class="hover:text-cyan-400">📰 Notícias</a></li>
-      <li><a href="#contato" onclick="closeSidebar()" class="hover:text-cyan-400">✉️ Contato</a></li>
-      <li>
-        <button onclick="openModal(); closeSidebar()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-2 rounded-lg shadow-lg text-xs font-bold mt-3 w-full">
-          Login / Registrar
-        </button>
-      </li>
-    </ul>
-  </div>
+  <!-- Conteúdo -->
+  <main class="flex-grow">
+    <section class="text-center py-16">
+      <h2 class="text-3xl sm:text-5xl font-bold mb-4">Bem-vindo ao Clube de Física</h2>
+      <p class="text-gray-300 text-sm sm:text-base">Aprenda, descubra e compartilhe ciência! 🚀</p>
+    </section>
 
-  <!-- Hero com Carrossel -->
-  <section class="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
-    <div id="slider" class="flex w-full h-full transition-transform duration-700">
-      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('images/imagem1.png');"></div>
-      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('naruto.jpg');"></div>
-      <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('boruto.jpg');"></div>
-    </div>
-    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-6">
-      <h2 class="text-lg sm:text-4xl md:text-6xl font-extrabold mb-3 animate-bounce">Bem-vindo ao Clube de Física ⚡</h2>
-      <p class="text-xs sm:text-base md:text-lg mb-5">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
-      <a href="#nucleos" class="bg-gradient-to-r from-blue-500 to-purple-700 hover:scale-105 px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-2xl text-xs sm:text-lg font-semibold">
-        Conheça nossos Núcleos
-      </a>
-    </div>
-    <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:scale-110">⬅️</button>
-    <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:scale-110">➡️</button>
-    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-      <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot0"></span>
-      <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot1"></span>
-      <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot2"></span>
-    </div>
-  </section>
-
-  <!-- Seção Sobre -->
-  <section id="sobre" class="py-12 px-6 text-center bg-gray-800">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-4">Sobre o Clube</h2>
-    <p class="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto">
-      O Clube de Física é um espaço de aprendizado e experimentação científica, promovendo o interesse pela ciência através de atividades práticas e projetos inovadores.
-    </p>
-  </section>
-
-  <!-- Seção Núcleos -->
-  <section id="nucleos" class="py-12 px-6 text-center bg-gray-900">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-8">Nossos Núcleos</h2>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Tesla - Núcleo de Eletrofísica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Estudo prático e teórico da eletricidade e circuitos.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Núcleo de Mecânica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Movimento, forças e energia em experimentos aplicados.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-        <h3 class="text-lg font-bold mb-2">Núcleo de Óptica</h3>
-        <p class="text-xs sm:text-sm text-gray-400">Luz, reflexão, refração e óptica aplicada.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção Atividades -->
-  <section id="atividades" class="py-12 px-6 text-center bg-gray-800">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-8">Atividades</h2>
-    <p class="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto mb-6">
-      Oficinas, experimentos práticos, palestras e competições científicas que estimulam a curiosidade e o pensamento crítico.
-    </p>
-  </section>
-
-  <!-- Seção Notícias -->
-  <section id="noticias" class="py-12 px-6 text-center bg-gray-900">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-8">Notícias & Eventos</h2>
-    <div id="noticiasLista" class="grid gap-6 max-w-3xl mx-auto"></div>
-  </section>
-
-  <!-- Seção Contato -->
-  <section id="contato" class="py-12 px-6 text-center bg-gray-800">
-    <h2 class="text-2xl sm:text-4xl font-bold mb-4">Contato</h2>
-    <p class="text-sm sm:text-base text-gray-300 mb-4">📧 <span class="text-cyan-400">fisica.sobral@ifce.edu.br</span></p>
-    <p class="text-sm sm:text-base text-gray-300">📍 Instituto Federal do Ceará - Campus Sobral</p>
-  </section>
+    <!-- Seção Notícias -->
+    <section id="noticias" class="py-12 px-6 text-center bg-gray-800">
+      <h2 class="text-2xl sm:text-4xl font-bold mb-8">📰 Notícias & Eventos</h2>
+      <div id="noticiasLista" class="grid gap-6 max-w-4xl mx-auto"></div>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-black py-6 text-center text-xs sm:text-sm text-gray-400">
-    © 2025 Clube de Física - IFCE. Todos os direitos reservados.
+  <footer class="bg-gray-800 p-4 text-center text-gray-400 text-sm">
+    © 2025 Clube de Física - IFCE Sobral
   </footer>
 
   <!-- Modal Login -->
   <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
     <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-80 sm:w-96 text-center">
-      <h2 class="text-lg sm:text-xl font-bold mb-4">Login</h2>
+      <h2 class="text-lg sm:text-xl font-bold mb-4">Login Administrativo</h2>
       <input id="email" type="email" placeholder="Email" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
       <input id="password" type="password" placeholder="Senha" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
       <button onclick="login()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Entrar</button>
@@ -139,93 +44,112 @@
     </div>
   </div>
 
-  <!-- Painel Admin (oculto até login) -->
-  <div id="adminPanel" class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 overflow-y-auto z-50 p-6">
-    <h1 class="text-2xl sm:text-4xl font-bold text-center mb-6">Painel Administrativo ⚡</h1>
-    <form id="newsForm" class="bg-gray-800 p-6 rounded-xl shadow-lg max-w-xl mx-auto">
-      <input id="titulo" type="text" placeholder="Título da Notícia" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" required>
-      <textarea id="conteudo" placeholder="Digite o conteúdo..." class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" rows="5" required></textarea>
-      <input id="arquivo" type="file" class="w-full mb-3 text-sm text-gray-300">
-      <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Publicar</button>
-    </form>
-    <h2 class="text-xl font-bold mt-8 mb-4 text-center">Notícias Publicadas</h2>
-    <div id="listaNoticias" class="grid gap-4 max-w-2xl mx-auto"></div>
-    <div class="text-center mt-6">
-      <button onclick="closeAdmin()" class="bg-red-600 px-4 py-2 rounded-lg font-bold text-sm">Sair do Painel</button>
+  <!-- Modal Admin -->
+  <div id="adminPanel" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center hidden z-50 overflow-auto">
+    <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-full max-w-3xl">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Painel Administrativo ⚡</h2>
+        <button onclick="logout()" class="text-red-400 font-bold hover:underline">Sair</button>
+      </div>
+
+      <form id="newsForm" class="bg-gray-800 p-4 rounded-xl shadow-lg mb-6">
+        <input id="titulo" type="text" placeholder="Título da Notícia" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" required>
+        <textarea id="conteudo" placeholder="Digite o conteúdo..." class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" rows="4" required></textarea>
+        <input id="imagem" type="file" accept="image/*" class="w-full mb-3 text-sm text-gray-300">
+        <button type="submit" class="bg-gradient-to-r from-green-500 to-blue-600 px-4 py-2 rounded-lg font-bold w-full text-sm">📢 Publicar</button>
+      </form>
+
+      <h3 class="text-xl font-bold mb-4">Notícias Publicadas</h3>
+      <div id="listaNoticiasAdmin" class="grid gap-4"></div>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
-    const slider = document.getElementById('slider');
-    const dots = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
-    let index = 0;
-
-    function updateDots() { dots.forEach((dot, i) => dot.style.opacity = (i === index) ? "1" : "0.5"); }
-    function moveSlide() { slider.style.transform = `translateX(-${index * 100}%)`; updateDots(); }
-    function nextSlide() { index = (index + 1) % slider.children.length; moveSlide(); }
-    function prevSlide() { index = (index - 1 + slider.children.length) % slider.children.length; moveSlide(); }
-    setInterval(nextSlide, 4000); updateDots();
-
-    function openSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(0)';}
-    function closeSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(100%)';}
-    function openModal(){document.getElementById('loginModal').classList.remove('hidden');}
-    function closeModal(){document.getElementById('loginModal').classList.add('hidden');}
+    // Abrir/fechar modais
+    function openModal() { document.getElementById("loginModal").classList.remove("hidden"); }
+    function closeModal() { document.getElementById("loginModal").classList.add("hidden"); }
+    function logout() { document.getElementById("adminPanel").classList.add("hidden"); }
 
     // Login fixo
     function login() {
       const email = document.getElementById('email').value;
       const senha = document.getElementById('password').value;
       if (email === "ifce@edu.fisica" && senha === "ifce2025") {
-        document.getElementById('loginModal').classList.add('hidden');
-        document.getElementById('adminPanel').classList.remove('hidden');
+        document.getElementById("loginModal").classList.add("hidden");
+        document.getElementById("adminPanel").classList.remove("hidden");
+        renderNoticiasAdmin();
       } else {
         alert("Credenciais inválidas!");
       }
     }
-    function closeAdmin(){document.getElementById('adminPanel').classList.add('hidden');}
 
-    // Sistema de Notícias
-    const form = document.getElementById('newsForm');
-    const lista = document.getElementById('listaNoticias');
-    const noticiasLista = document.getElementById("noticiasLista");
+    // Lista de notícias
     let noticias = JSON.parse(localStorage.getItem("noticias")) || [];
 
-    function renderNoticias() {
-      lista.innerHTML = "";
-      noticiasLista.innerHTML = "";
-      noticias.forEach(n => {
-        const item = `
-          <div class="bg-gray-800 p-4 rounded shadow-lg">
-            <h3 class="text-lg font-bold">${n.titulo}</h3>
-            <p class="text-sm text-gray-300 mb-2">${n.conteudo}</p>
-            ${n.arquivo ? `<a href="${n.arquivo}" target="_blank" class="text-cyan-400 text-sm">📎 Ver Anexo</a>` : ""}
-          </div>
-        `;
-        lista.innerHTML += item;
-        noticiasLista.innerHTML += item;
-      });
-    }
-
+    // Publicar nova notícia
+    const form = document.getElementById('newsForm');
     form.addEventListener("submit", e => {
       e.preventDefault();
       const titulo = document.getElementById("titulo").value;
       const conteudo = document.getElementById("conteudo").value;
-      const fileInput = document.getElementById("arquivo");
+      const imgInput = document.getElementById("imagem");
+      let imagemURL = "";
 
-      let arquivoURL = "";
-      if (fileInput.files.length > 0) {
-        arquivoURL = URL.createObjectURL(fileInput.files[0]);
+      if (imgInput.files.length > 0) {
+        imagemURL = URL.createObjectURL(imgInput.files[0]);
       }
 
-      noticias.push({ titulo, conteudo, arquivo: arquivoURL });
+      noticias.push({ titulo, conteudo, imagem: imagemURL });
       localStorage.setItem("noticias", JSON.stringify(noticias));
       form.reset();
       renderNoticias();
+      renderNoticiasAdmin();
     });
 
+    // Render público
+    function renderNoticias() {
+      const lista = document.getElementById("noticiasLista");
+      lista.innerHTML = "";
+      noticias.forEach((n, i) => {
+        lista.innerHTML += `
+          <div class="bg-gray-900 p-4 rounded-lg shadow-lg hover:scale-105 transform transition">
+            ${n.imagem ? `<img src="${n.imagem}" class="w-full h-48 object-cover rounded mb-3">` : ""}
+            <h3 class="text-lg font-bold">${n.titulo}</h3>
+            <p class="text-sm text-gray-300">${n.conteudo}</p>
+          </div>
+        `;
+      });
+    }
+
+    // Render admin
+    function renderNoticiasAdmin() {
+      const lista = document.getElementById("listaNoticiasAdmin");
+      lista.innerHTML = "";
+      noticias.forEach((n, i) => {
+        lista.innerHTML += `
+          <div class="bg-gray-800 p-4 rounded shadow-lg flex flex-col sm:flex-row gap-4 items-center">
+            ${n.imagem ? `<img src="${n.imagem}" class="w-24 h-24 object-cover rounded">` : ""}
+            <div class="flex-1 text-left">
+              <h3 class="text-lg font-bold">${n.titulo}</h3>
+              <p class="text-sm text-gray-300">${n.conteudo}</p>
+            </div>
+            <button onclick="excluirNoticia(${i})" class="bg-red-500 px-3 py-1 rounded text-sm font-bold">Excluir</button>
+          </div>
+        `;
+      });
+    }
+
+    // Excluir notícia
+    function excluirNoticia(index) {
+      noticias.splice(index, 1);
+      localStorage.setItem("noticias", JSON.stringify(noticias));
+      renderNoticias();
+      renderNoticiasAdmin();
+    }
+
+    // Inicializar
     renderNoticias();
   </script>
 </body>
 </html>
-```
+
