@@ -3,202 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clube de Física - IFCE</title>
+  <title>Clube de Física</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #111827; color: white; }
+    .news-card img { max-height: 200px; object-fit: cover; border-radius: 0.5rem; }
+    @media (max-width: 640px) {
+      .news-card h3 { font-size: 1rem; }
+      .news-card p { font-size: 0.8rem; }
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col">
 
   <!-- Navbar -->
-  <nav class="bg-gray-800 p-4 flex justify-between items-center shadow-lg">
-    <h1 class="text-lg sm:text-2xl font-bold">⚡ Clube de Física</h1>
-    <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-1 sm:px-4 sm:py-2 rounded-lg font-bold text-xs sm:text-sm">Login</button>
+  <nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Clube de Física</h1>
+    <div class="hidden md:flex space-x-6">
+      <a href="#sobre" class="hover:text-gray-400">Sobre</a>
+      <a href="#nucleos" class="hover:text-gray-400">Núcleos</a>
+      <a href="#atividades" class="hover:text-gray-400">Atividades</a>
+      <a href="#noticias" class="hover:text-gray-400">Notícias</a>
+      <a href="#contato" class="hover:text-gray-400">Contato</a>
+    </div>
+    <button class="md:hidden" onclick="toggleMenu()">☰</button>
   </nav>
 
-  <!-- Conteúdo -->
-  <main class="flex-grow">
+  <!-- Sidebar Mobile -->
+  <div id="mobileMenu" class="hidden bg-gray-800 flex-col space-y-4 p-4 md:hidden">
+    <a href="#sobre" class="hover:text-gray-400">Sobre</a>
+    <a href="#nucleos" class="hover:text-gray-400">Núcleos</a>
+    <a href="#atividades" class="hover:text-gray-400">Atividades</a>
+    <a href="#noticias" class="hover:text-gray-400">Notícias</a>
+    <a href="#contato" class="hover:text-gray-400">Contato</a>
+  </div>
 
-    <!-- Seção Apresentação -->
-    <section class="text-center py-12 px-4">
-      <h2 class="text-xl sm:text-4xl font-bold mb-4">Bem-vindo ao Clube de Física</h2>
-      <p class="text-xs sm:text-base text-gray-300 max-w-2xl mx-auto">
-        Ciência, inovação e descobertas em um só lugar! 🚀✨
-      </p>
-    </section>
+  <!-- Hero -->
+  <section class="relative h-64 md:h-96 bg-cover bg-center" style="background-image:url('https://source.unsplash.com/1200x600/?physics,science');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <h2 class="text-3xl md:text-5xl font-bold">Bem-vindo ao Clube de Física</h2>
+    </div>
+  </section>
 
-    <!-- Seção Núcleo -->
-    <section class="py-12 px-6 bg-gray-800 text-center">
-      <h2 class="text-xl sm:text-3xl font-bold mb-6">👨‍🔬 Núcleo</h2>
-      <p class="text-xs sm:text-base text-gray-300 max-w-3xl mx-auto">
-        O Núcleo do Clube de Física reúne estudantes, professores e entusiastas em atividades de ensino,
-        pesquisa e extensão. Criamos experiências únicas que aproximam a Física do cotidiano.
-      </p>
-    </section>
+  <!-- Seções -->
+  <section id="sobre" class="p-6 md:p-12">
+    <h2 class="text-2xl font-bold mb-4">Sobre</h2>
+    <p>O Clube de Física promove atividades práticas, experimentos e palestras para incentivar o aprendizado de forma divertida e aplicada.</p>
+  </section>
 
-    <!-- Seção Atividades -->
-    <section class="py-12 px-6 text-center">
-      <h2 class="text-xl sm:text-3xl font-bold mb-8">📚 Atividades</h2>
-      <div class="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Palestras</h3>
-          <p class="text-xs sm:text-sm text-gray-300">Eventos com professores e convidados abordando temas atuais da Física.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Experimentos</h3>
-          <p class="text-xs sm:text-sm text-gray-300">Oficinas práticas e demonstrações que tornam a ciência divertida.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Estudos</h3>
-          <p class="text-xs sm:text-sm text-gray-300">Grupos colaborativos para explorar conteúdos e novos conceitos.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Eventos</h3>
-          <p class="text-xs sm:text-sm text-gray-300">Competições e feiras científicas para compartilhar descobertas.</p>
-        </div>
-      </div>
-    </section>
+  <section id="nucleos" class="p-6 md:p-12 bg-gray-800">
+    <h2 class="text-2xl font-bold mb-4">Núcleos</h2>
+    <p>Organizamos grupos de estudos e núcleos temáticos que exploram áreas como astronomia, eletricidade, mecânica e mais.</p>
+  </section>
 
-    <!-- Seção Notícias -->
-    <section id="noticias" class="py-12 px-6 text-center bg-gray-800">
-      <h2 class="text-xl sm:text-3xl font-bold mb-8">📰 Notícias & Eventos</h2>
-      <div id="noticiasLista" class="grid gap-6 max-w-4xl mx-auto"></div>
-    </section>
-  </main>
+  <section id="atividades" class="p-6 md:p-12">
+    <h2 class="text-2xl font-bold mb-4">Atividades</h2>
+    <p>Experimentos interativos, oficinas, palestras e feiras científicas fazem parte da nossa rotina.</p>
+  </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 p-4 text-center text-gray-400 text-xs sm:text-sm">
-    © 2025 Clube de Física - IFCE Sobral
-  </footer>
+  <!-- Notícias -->
+  <section id="noticias" class="p-6 md:p-12 bg-gray-800">
+    <h2 class="text-2xl font-bold mb-4">Notícias</h2>
+    <div id="news-container" class="grid md:grid-cols-2 gap-6"></div>
+  </section>
 
-  <!-- Modal Login -->
-  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
-    <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-80 sm:w-96 text-center">
-      <h2 class="text-lg sm:text-xl font-bold mb-4">Login Administrativo</h2>
-      <input id="email" type="email" placeholder="Email" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
-      <input id="password" type="password" placeholder="Senha" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
-      <button onclick="login()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Entrar</button>
-      <button onclick="closeModal()" class="mt-4 text-red-400 hover:underline text-xs sm:text-sm">Fechar</button>
+  <!-- Contato -->
+  <section id="contato" class="p-6 md:p-12">
+    <h2 class="text-2xl font-bold mb-4">Contato</h2>
+    <p>Email: contato@clubedefisica.com</p>
+  </section>
+
+  <!-- Login/Admin -->
+  <div id="login-section" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 hidden">
+    <div class="bg-white text-black p-6 rounded-lg w-80">
+      <h3 class="text-xl font-bold mb-4">Login</h3>
+      <input id="username" type="text" placeholder="Usuário" class="w-full mb-2 p-2 border rounded">
+      <input id="password" type="password" placeholder="Senha" class="w-full mb-2 p-2 border rounded">
+      <button onclick="login()" class="w-full bg-blue-600 text-white p-2 rounded">Entrar</button>
     </div>
   </div>
 
-  <!-- Painel Admin -->
-  <div id="adminPanel" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center hidden z-50 overflow-auto">
-    <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-full max-w-3xl">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl sm:text-2xl font-bold">Painel Administrativo ⚡</h2>
-        <button onclick="logout()" class="text-red-400 font-bold hover:underline">Sair</button>
-      </div>
-
-      <form id="newsForm" class="bg-gray-800 p-4 rounded-xl shadow-lg mb-6">
-        <input id="titulo" type="text" placeholder="Título da Notícia" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" required>
-        <textarea id="conteudo" placeholder="Digite o conteúdo..." class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" rows="4" required></textarea>
-        <input id="imagem" type="file" accept="image/*" class="w-full mb-3 text-sm text-gray-300">
-        <input id="pdf" type="file" accept="application/pdf" class="w-full mb-3 text-sm text-gray-300">
-        <button type="submit" class="bg-gradient-to-r from-green-500 to-blue-600 px-4 py-2 rounded-lg font-bold w-full text-sm">📢 Publicar</button>
-      </form>
-
-      <h3 class="text-lg sm:text-xl font-bold mb-4">Notícias Publicadas</h3>
-      <div id="listaNoticiasAdmin" class="grid gap-4"></div>
-    </div>
+  <div id="admin-section" class="hidden p-6 bg-gray-900 text-white">
+    <h3 class="text-2xl font-bold mb-4">Painel Administrativo</h3>
+    <input id="news-title" type="text" placeholder="Título da notícia" class="w-full mb-2 p-2 text-black rounded">
+    <textarea id="news-content" placeholder="Conteúdo da notícia" class="w-full mb-2 p-2 text-black rounded"></textarea>
+    <input id="news-image" type="file" accept="image/*" class="mb-2">
+    <input id="news-pdf" type="file" accept="application/pdf" class="mb-2">
+    <button onclick="addNews()" class="bg-green-600 px-4 py-2 rounded">Publicar</button>
   </div>
 
-  <!-- Scripts -->
   <script>
-    function openModal() { document.getElementById("loginModal").classList.remove("hidden"); }
-    function closeModal() { document.getElementById("loginModal").classList.add("hidden"); }
-    function logout() { document.getElementById("adminPanel").classList.add("hidden"); }
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
 
+    // Login simples
     function login() {
-      const email = document.getElementById('email').value;
-      const senha = document.getElementById('password').value;
-      if (email === "ifce@edu.fisica" && senha === "ifce2025") {
-        document.getElementById("loginModal").classList.add("hidden");
-        document.getElementById("adminPanel").classList.remove("hidden");
-        renderNoticiasAdmin();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if(user === "admin" && pass === "123") {
+        document.getElementById("login-section").classList.add("hidden");
+        document.getElementById("admin-section").classList.remove("hidden");
       } else {
-        alert("Credenciais inválidas!");
+        alert("Usuário ou senha incorretos!");
       }
     }
 
-    let noticias = JSON.parse(localStorage.getItem("noticias")) || [];
+    // Armazena notícias no localStorage
+    function addNews() {
+      const title = document.getElementById("news-title").value;
+      const content = document.getElementById("news-content").value;
+      const imageFile = document.getElementById("news-image").files[0];
+      const pdfFile = document.getElementById("news-pdf").files[0];
+      
+      if(!title || !content) return alert("Preencha título e conteúdo!");
+      
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        const news = { title, content, image: e.target.result, pdf: null };
 
-    const form = document.getElementById('newsForm');
-    form.addEventListener("submit", async e => {
-      e.preventDefault();
-      const titulo = document.getElementById("titulo").value;
-      const conteudo = document.getElementById("conteudo").value;
-
-      const imgInput = document.getElementById("imagem");
-      const pdfInput = document.getElementById("pdf");
-
-      let imagemURL = "";
-      let pdfURL = "";
-
-      if (imgInput.files.length > 0) {
-        imagemURL = await toBase64(imgInput.files[0]);
+        if(pdfFile) {
+          let pdfReader = new FileReader();
+          pdfReader.onload = function(ev) {
+            news.pdf = ev.target.result;
+            saveNews(news);
+          }
+          pdfReader.readAsDataURL(pdfFile);
+        } else {
+          saveNews(news);
+        }
       }
-      if (pdfInput.files.length > 0) {
-        pdfURL = await toBase64(pdfInput.files[0]);
-      }
-
-      noticias.push({ titulo, conteudo, imagem: imagemURL, pdf: pdfURL });
-      localStorage.setItem("noticias", JSON.stringify(noticias));
-      form.reset();
-      renderNoticias();
-      renderNoticiasAdmin();
-    });
-
-    function toBase64(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
+      if(imageFile) reader.readAsDataURL(imageFile);
+      else saveNews({ title, content, image: null, pdf: null });
     }
 
-    function renderNoticias() {
-      const lista = document.getElementById("noticiasLista");
-      lista.innerHTML = "";
-      noticias.forEach((n, i) => {
-        lista.innerHTML += `
-          <div class="bg-gray-900 p-4 rounded-lg shadow-lg hover:scale-105 transform transition text-left">
-            ${n.imagem ? `<img src="${n.imagem}" class="w-full rounded mb-3 object-contain">` : ""}
-            <h3 class="text-base sm:text-lg font-bold mb-1">${n.titulo}</h3>
-            <p class="text-xs sm:text-sm text-gray-300 mb-2">${n.conteudo}</p>
-            ${n.pdf ? `<a href="${n.pdf}" target="_blank" class="text-cyan-400 text-xs sm:text-sm">📄 Ver PDF</a>` : ""}
-          </div>
-        `;
-      });
+    function saveNews(news) {
+      let newsList = JSON.parse(localStorage.getItem("news")) || [];
+      newsList.push(news);
+      localStorage.setItem("news", JSON.stringify(newsList));
+      renderNews();
     }
 
-    function renderNoticiasAdmin() {
-      const lista = document.getElementById("listaNoticiasAdmin");
-      lista.innerHTML = "";
-      noticias.forEach((n, i) => {
-        lista.innerHTML += `
-          <div class="bg-gray-800 p-4 rounded shadow-lg flex flex-col sm:flex-row gap-4 items-center">
-            ${n.imagem ? `<img src="${n.imagem}" class="w-24 h-24 object-contain rounded">` : ""}
-            <div class="flex-1 text-left">
-              <h3 class="text-sm sm:text-lg font-bold">${n.titulo}</h3>
-              <p class="text-xs sm:text-sm text-gray-300">${n.conteudo}</p>
-              ${n.pdf ? `<a href="${n.pdf}" target="_blank" class="text-cyan-400 text-xs">📄 PDF anexado</a>` : ""}
-            </div>
-            <button onclick="excluirNoticia(${i})" class="bg-red-500 px-3 py-1 rounded text-xs sm:text-sm font-bold">Excluir</button>
-          </div>
-        `;
-      });
-    }
-
-    function excluirNoticia(index) {
-      noticias.splice(index, 1);
-      localStorage.setItem("noticias", JSON.stringify(noticias));
-      renderNoticias();
-      renderNoticiasAdmin();
-    }
-
-    renderNoticias();
-  </script>
-</body>
-</html>
+    function renderNews() {
+      const container = document.getElementById("news-container");
+      container.innerHTML = "";
+      let newsList = JSON.parse(localStorage.getItem("news")) || [];
+      newsList.forEach((n, i) => {
+        let card = document.createElement("div");
+        card.className = "news-card bg-gray-700 p-4 rounded shadow";
+        card.innerHTML = `
+          ${n.image ? `<img src="${n.image}" alt="Notícia" class="mb-2 w-full">` : ""}
+          <h3 class="text-xl font-bold">${n.title}</h3>
+          <p class="mt-2">${n.content}</p>
+          ${n.pdf ? `<a href="${n.pdf}" target="_blank" class="text-blue-400 underline block mt-2">Abrir PDF<_
 
 
