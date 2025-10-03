@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,6 +18,7 @@
       <li><a href="#sobre" class="hover:text-cyan-400 transition">Sobre</a></li>
       <li><a href="#nucleos" class="hover:text-cyan-400 transition">Núcleos</a></li>
       <li><a href="#atividades" class="hover:text-cyan-400 transition">Atividades</a></li>
+      <li><a href="#noticias" class="hover:text-cyan-400 transition">Notícias</a></li>
       <li><a href="#contato" class="hover:text-cyan-400 transition">Contato</a></li>
       <li>
         <button onclick="openModal()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-1.5 rounded-lg shadow-lg text-xs sm:text-sm font-bold hover:scale-105 transform transition">
@@ -40,6 +42,7 @@
       <li><a href="#sobre" onclick="closeSidebar()" class="hover:text-cyan-400">🏠 Sobre</a></li>
       <li><a href="#nucleos" onclick="closeSidebar()" class="hover:text-cyan-400"> Núcleos</a></li>
       <li><a href="#atividades" onclick="closeSidebar()" class="hover:text-cyan-400"> Atividades</a></li>
+      <li><a href="#noticias" onclick="closeSidebar()" class="hover:text-cyan-400">📰 Notícias</a></li>
       <li><a href="#contato" onclick="closeSidebar()" class="hover:text-cyan-400">✉️ Contato</a></li>
       <li>
         <button onclick="openModal(); closeSidebar()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-3 py-2 rounded-lg shadow-lg text-xs font-bold mt-3 w-full">
@@ -52,15 +55,10 @@
   <!-- Hero com Carrossel -->
   <section class="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
     <div id="slider" class="flex w-full h-full transition-transform duration-700">
-      <!-- Slide 1 -->
       <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('images/imagem1.png');"></div>
-      <!-- Slide 2 -->
       <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('naruto.jpg');"></div>
-      <!-- Slide 3 -->
       <div class="w-full h-full flex-shrink-0 bg-cover bg-center" style="background-image: url('boruto.jpg');"></div>
     </div>
-
-    <!-- Texto central -->
     <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-6">
       <h2 class="text-lg sm:text-4xl md:text-6xl font-extrabold mb-3 animate-bounce">Bem-vindo ao Clube de Física ⚡</h2>
       <p class="text-xs sm:text-base md:text-lg mb-5">Ciência, inovação e descobertas em um só lugar! 🚀✨</p>
@@ -68,12 +66,8 @@
         Conheça nossos Núcleos
       </a>
     </div>
-
-    <!-- Botões -->
     <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:scale-110">⬅️</button>
     <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:scale-110">➡️</button>
-
-    <!-- Indicadores -->
     <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
       <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot0"></span>
       <span class="w-3 h-3 bg-white rounded-full opacity-50" id="dot1"></span>
@@ -116,8 +110,14 @@
     </p>
   </section>
 
+  <!-- Seção Notícias -->
+  <section id="noticias" class="py-12 px-6 text-center bg-gray-900">
+    <h2 class="text-2xl sm:text-4xl font-bold mb-8">Notícias & Eventos</h2>
+    <div id="noticiasLista" class="grid gap-6 max-w-3xl mx-auto"></div>
+  </section>
+
   <!-- Seção Contato -->
-  <section id="contato" class="py-12 px-6 text-center bg-gray-900">
+  <section id="contato" class="py-12 px-6 text-center bg-gray-800">
     <h2 class="text-2xl sm:text-4xl font-bold mb-4">Contato</h2>
     <p class="text-sm sm:text-base text-gray-300 mb-4">📧 <span class="text-cyan-400">fisica.sobral@ifce.edu.br</span></p>
     <p class="text-sm sm:text-base text-gray-300">📍 Instituto Federal do Ceará - Campus Sobral</p>
@@ -131,11 +131,27 @@
   <!-- Modal Login -->
   <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
     <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-80 sm:w-96 text-center">
-      <h2 class="text-lg sm:text-xl font-bold mb-4">Login
-      <input type="email" placeholder="Email" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
-      <input type="password" placeholder="Senha" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
-      <button class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Entrar</button>
+      <h2 class="text-lg sm:text-xl font-bold mb-4">Login</h2>
+      <input id="email" type="email" placeholder="Email" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
+      <input id="password" type="password" placeholder="Senha" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm">
+      <button onclick="login()" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Entrar</button>
       <button onclick="closeModal()" class="mt-4 text-red-400 hover:underline text-xs sm:text-sm">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Painel Admin (oculto até login) -->
+  <div id="adminPanel" class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 overflow-y-auto z-50 p-6">
+    <h1 class="text-2xl sm:text-4xl font-bold text-center mb-6">Painel Administrativo ⚡</h1>
+    <form id="newsForm" class="bg-gray-800 p-6 rounded-xl shadow-lg max-w-xl mx-auto">
+      <input id="titulo" type="text" placeholder="Título da Notícia" class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" required>
+      <textarea id="conteudo" placeholder="Digite o conteúdo..." class="w-full mb-3 p-2 rounded bg-gray-700 text-white text-sm" rows="5" required></textarea>
+      <input id="arquivo" type="file" class="w-full mb-3 text-sm text-gray-300">
+      <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-700 px-4 py-2 rounded-lg font-bold w-full text-sm">Publicar</button>
+    </form>
+    <h2 class="text-xl font-bold mt-8 mb-4 text-center">Notícias Publicadas</h2>
+    <div id="listaNoticias" class="grid gap-4 max-w-2xl mx-auto"></div>
+    <div class="text-center mt-6">
+      <button onclick="closeAdmin()" class="bg-red-600 px-4 py-2 rounded-lg font-bold text-sm">Sair do Painel</button>
     </div>
   </div>
 
@@ -145,35 +161,71 @@
     const dots = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
     let index = 0;
 
-    function updateDots() {
-      dots.forEach((dot, i) => {
-        dot.style.opacity = (i === index) ? "1" : "0.5";
-      });
-    }
-
-    function moveSlide() {
-      slider.style.transform = `translateX(-${index * 100}%)`;
-      updateDots();
-    }
-
-    function nextSlide() {
-      index = (index + 1) % slider.children.length;
-      moveSlide();
-    }
-
-    function prevSlide() {
-      index = (index - 1 + slider.children.length) % slider.children.length;
-      moveSlide();
-    }
-
-    setInterval(nextSlide, 4000);
-    updateDots();
+    function updateDots() { dots.forEach((dot, i) => dot.style.opacity = (i === index) ? "1" : "0.5"); }
+    function moveSlide() { slider.style.transform = `translateX(-${index * 100}%)`; updateDots(); }
+    function nextSlide() { index = (index + 1) % slider.children.length; moveSlide(); }
+    function prevSlide() { index = (index - 1 + slider.children.length) % slider.children.length; moveSlide(); }
+    setInterval(nextSlide, 4000); updateDots();
 
     function openSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(0)';}
     function closeSidebar(){document.getElementById('mobileSidebar').style.transform='translateX(100%)';}
     function openModal(){document.getElementById('loginModal').classList.remove('hidden');}
     function closeModal(){document.getElementById('loginModal').classList.add('hidden');}
-  </script>
 
+    // Login fixo
+    function login() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('password').value;
+      if (email === "ifce@edu.fisica" && senha === "ifce2025") {
+        document.getElementById('loginModal').classList.add('hidden');
+        document.getElementById('adminPanel').classList.remove('hidden');
+      } else {
+        alert("Credenciais inválidas!");
+      }
+    }
+    function closeAdmin(){document.getElementById('adminPanel').classList.add('hidden');}
+
+    // Sistema de Notícias
+    const form = document.getElementById('newsForm');
+    const lista = document.getElementById('listaNoticias');
+    const noticiasLista = document.getElementById("noticiasLista");
+    let noticias = JSON.parse(localStorage.getItem("noticias")) || [];
+
+    function renderNoticias() {
+      lista.innerHTML = "";
+      noticiasLista.innerHTML = "";
+      noticias.forEach(n => {
+        const item = `
+          <div class="bg-gray-800 p-4 rounded shadow-lg">
+            <h3 class="text-lg font-bold">${n.titulo}</h3>
+            <p class="text-sm text-gray-300 mb-2">${n.conteudo}</p>
+            ${n.arquivo ? `<a href="${n.arquivo}" target="_blank" class="text-cyan-400 text-sm">📎 Ver Anexo</a>` : ""}
+          </div>
+        `;
+        lista.innerHTML += item;
+        noticiasLista.innerHTML += item;
+      });
+    }
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const titulo = document.getElementById("titulo").value;
+      const conteudo = document.getElementById("conteudo").value;
+      const fileInput = document.getElementById("arquivo");
+
+      let arquivoURL = "";
+      if (fileInput.files.length > 0) {
+        arquivoURL = URL.createObjectURL(fileInput.files[0]);
+      }
+
+      noticias.push({ titulo, conteudo, arquivo: arquivoURL });
+      localStorage.setItem("noticias", JSON.stringify(noticias));
+      form.reset();
+      renderNoticias();
+    });
+
+    renderNoticias();
+  </script>
 </body>
 </html>
+```
